@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <body>
+    <form action="/admin" method="post">
+      <div>First Name: <input type="text" name="first"><br></div>
+      <div>Last Name: <input type="text" name="last"><br><div>
+      <div>Email: <input type="text" name="email"><br></div>
+      <div><input type="submit" value="Sign Guestbook"></div>
+    </form>
+
+    <h1> Invitees: </h1>
+    {% for invitee in invitees %}
+       {{ invitee.first_name }} {{invitee.last_name }} {{ invitee.email }}<br>
+    {% endfor %}
+
+  </body>
+<html>
+{% endautoescape %}

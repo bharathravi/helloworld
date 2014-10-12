@@ -1,4 +1,66 @@
 <!DOCTYPE html>
 {% autoescape true %}
 <html>
+   <!-- Grab the JQuery API from the Google servers -->
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+
+  <script type="text/javascript" charset="utf-8">
+  $(document).ready(function(){
+    console.log("READY");
+    $("input[name = 'rsvpRadio']").click(function(){
+      var isComing = $('input[name=rsvpRadio]:checked').val();
+      
+      var dataString = "rsvp=" + isComing;
+
+      console.log(dataString);
+      $.ajax({
+        type: "POST",
+        data: dataString,
+        url: "/rsvp",
+        success: function(data) {
+          console.log("RET " + data.retval);
+          $('#rsvpBtn').insertBefore('<div>Success!</div>').delay(3000).fadeOut();
+        }
+      });
+    });
+  });
+  </script>
+
   <body>
+    {% if guest %}
+       <p>
+         Hi {{ guest.first_name }} {{guest.last_name }}! <br>
+	 <form name="rsvpForm">
+
+           <label><input type="radio" name="rsvpRadio" value="yes"
+      {% if guest.rsvp == "yes" %}
+           checked="checked"
+      {% endif %}
+           >Yes<br></label>
+
+
+           <label><input type="radio" name="rsvpRadio" value="no"
+      {% if guest.rsvp == "no" %}
+           checked="checked"
+      {% endif %}
+           >No<br></label>
+
+           <label><input type="radio" name="rsvpRadio" value="maybe"
+      {% if guest.rsvp == "maybe" %}
+           checked="checked"
+      {% endif %}
+           >Maybe<br></label>
+
+         </form>
+         <div id="rsvpResult"><div>
+         If this is not you, click here.
+       </p>
+    {% else %}
+      <p>Not found :( Sign in as a different user?</p>
+    {% endif %}
+
+    <a href="{{ logout_url }}"> Logout </a>
+
+  </body>
+<html>
+{% endautoescape %}
