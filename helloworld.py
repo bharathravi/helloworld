@@ -11,7 +11,8 @@ MAIN_PAGE_HTML = """\
       <div>First Name: <input type="text" name="first"><br></div>
       <div>Last Name: <input type="text" name="last"><br><div>
       <div>Email: <input type="text" name="email"><br></div>
-      <div><input type="submit" value="Sign Guestbook"></div>
+      <div><input type="submit" value="Add"></div>
+      <div><input type="submit" value="Remove"></div>
     </form>
   </body>
 </html>
