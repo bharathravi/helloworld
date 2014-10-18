@@ -5,8 +5,12 @@ api_version: 1
 threadsafe: true
 
 handlers:
+- url: /stylesheets
+  static_dir: stylesheets
+
 - url: /.*
   script: helloworld.application
+
 
 libraries:
 - name: webapp2

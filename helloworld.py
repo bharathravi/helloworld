@@ -28,6 +28,8 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
+ADMINS = ['bharathravi1@gmail.com', 'ranjithagk@gmail.com']
+
 class Invitee(ndb.Model):
   """A single invitee"""
   first_name = ndb.StringProperty(indexed=True)
@@ -63,6 +65,10 @@ class MainPage(LoginPage):
 class GuestManager(LoginPage):
   def get(self):
     user = self.GetUserOrRedirect(self.request.uri)
+    if user.email() not in ADMINS:
+        self.response.write('You are not admin')
+        return
+
     query = Invitee.query()
     invitees = query.fetch()
      
@@ -94,7 +100,6 @@ class GuestManager(LoginPage):
 
 class RSVP(LoginPage):
   def post(self):
-    print "asa"
     user = self.GetUserOrRedirect(self.request.uri)
     rsvp = self.request.get("rsvp")
 

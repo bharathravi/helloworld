@@ -1,17 +1,41 @@
 <!DOCTYPE html>
 {% autoescape true %}
 <html>
-   <!-- Grab the JQuery API from the Google servers -->
-   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+   <head>
+     <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
 
-  <script type="text/javascript" charset="utf-8">
-  $(document).ready(function(){
-    console.log("READY");
-    $("input[name = 'rsvpRadio']").click(function(){
-      var isComing = $('input[name=rsvpRadio]:checked').val();
+     <!-- Grab the JQuery API from the Google servers -->
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  
+    <script type="text/javascript" charset="utf-8">
+    function ResponseToDiv(response) {
+      if (response == 1) { 
+        return "divYes";
+      } else if (response == 0) {
+        return "divMaybe";
+      } else if (response == -1) {
+        return "divNo";
+      }
+    }
+    function DrawResponse(response) {
+      var divName = ResponseToDiv(response);
+  
+      $(".response").each(function( i ) {
+        id = $(this).attr('id');
+        if (id == divName) {
+          $(this).addClass("selected");
+        } else {
+          $(this).removeClass("selected");
+        }
+      }); 
+    }
+  
+    function SetResponse(response) {
+      var dataString = "rsvp=" + response;
+      var divName = '#' + ResponseToDiv(response);
+      old = $(divName).text();
+      $(divName).text("Saving...");
       
-      var dataString = "rsvp=" + isComing;
-
       console.log(dataString);
       $.ajax({
         type: "POST",
@@ -19,40 +43,43 @@
         url: "/rsvp",
         success: function(data) {
           console.log("RET " + data.retval);
-          $('#rsvpBtn').insertBefore('<div>Success!</div>').delay(3000).fadeOut();
+          $(divName).text(old);
+          DrawResponse(response);
+          $('#rsvpResult').insertBefore('<div>Success!</div>').delay(3000).fadeOut();
         }
       });
+    }
+  
+    $(document).ready(function(){
+      console.log("READY");
+      $("#divYes").click(function(){
+        SetResponse(1);
+      });
+  
+      $("#divMaybe").click(function(){
+        SetResponse(0);
+      });
+  
+      $("#divNo").click(function(){
+        SetResponse(-1);
+      });
+  
+      DrawResponse(parseInt({{ guest.rsvp }}));
     });
-  });
-  </script>
-
+    </script>
+  </head>
+  
   <body>
     {% if guest %}
        <p>
          Hi {{ guest.first_name }} {{guest.last_name }}! <br>
-	 <form name="rsvpForm">
 
-           <label><input type="radio" name="rsvpRadio" value="yes"
-      {% if guest.rsvp == "yes" %}
-           checked="checked"
-      {% endif %}
-           >Yes<br></label>
+         <div id="divYes" class="response"> Yes </div>
+         <div id="divMaybe" class="response"> Maybe </div>
+         <div id="divNo" class="response"> No </div>
 
-
-           <label><input type="radio" name="rsvpRadio" value="no"
-      {% if guest.rsvp == "no" %}
-           checked="checked"
-      {% endif %}
-           >No<br></label>
-
-           <label><input type="radio" name="rsvpRadio" value="maybe"
-      {% if guest.rsvp == "maybe" %}
-           checked="checked"
-      {% endif %}
-           >Maybe<br></label>
-
-         </form>
-         <div id="rsvpResult"><div>
+	<br><br><br>
+         <div id="rsvpResult"></div>
          If this is not you, click here.
        </p>
     {% else %}
