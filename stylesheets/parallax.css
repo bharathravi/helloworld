@@ -23,13 +23,16 @@ body{
 
 #responseOuter {
   width: 100%;
-  height: 1%;
+  height: 10%;
   padding: 1%;
+  position: fixed;
+  top: 30%;
+  left: 0%;
   z-index: 700;
 }
 
 .response {
-  position: center;
+  position: relative;
   float: left;
   width: 30%;
   height: 100%;
@@ -46,6 +49,7 @@ body{
   cursor: pointer;
   -webkit-box-shadow: inset 0 -2px #2a8bcc;
   box-shadow: inset 0 -2px #2a8bcc;
+  z-index: 700;
 }
 .response:active {
   top: 1px;
@@ -194,13 +198,6 @@ body{
     top: 70%;
 }
 
-.story .float-left, .story .float-right{
-	
-	position: relative;
-	height : 100%;
-	width: 100%;	
-	
-}
 
 @keyframes fadein {
     from { opacity: 0; }
@@ -237,19 +234,12 @@ body{
 	left: 50%;
 	top: 50%;
 }
-	.hsContent h2  {
-		color: #fff8de;
-		background-color: rgba(0,0,0,0.5);
-		padding: 10px 5px;
-		font-size: 35px;
-		line-height: 38px;
-		margin-bottom: 12px;
-	}
-	.hsContent p {
-		width: 400px;
-		color: #b2b2b2;
-	}
-	.hsContent a {
-		color: #b2b2b2;
-		text-decoration: underline;
-	}
+
+.hsContent h2  {
+	color: #fff8de;
+	background-color: rgba(0,0,0,0.5);
+	padding: 10px 5px;
+	font-size: 35px;
+	line-height: 38px;
+	margin-bottom: 12px;
+}

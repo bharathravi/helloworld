@@ -118,13 +118,22 @@
                 data--100-bottom="opacity: 0;"
                 data-anchor-target="#third">
             </div><!-- hat -->
+            <div id="responseOuter"
+                data-center="opacity: 1"
+                data-center-top="opacity: 0"
+                data--100-bottom="opacity: 0;"
+                data-anchor-target="#seventh">
+                <div id="divYes" class="response"> Yes </div>
+                <div id="divMaybe" class="response"> Maybe </div>
+                <div id="divNo" class="response"> No </div>
+            </div><!-- responseOuter -->
           </div><!-- static -->
 
-          <div id="first">
+          <div id="first" class="storyelement">
             <h2>First story sentence</h2>
           </div> <!--#first-->
   
-          <div id="second">
+          <div id="second" class="storyelement">
             <div class="hsContent"
                    data-center="opacity: 1"
                    data-center-top="opacity: 0"
@@ -135,7 +144,7 @@
             </div>
           </div> <!--#second-->
       
-          <div id="third">
+          <div id="third" class="storyelement">
             <div class="hsContent"
                     data-center="opacity: 1"
                     data-center-top="opacity: 0"
@@ -146,7 +155,7 @@
             </div>
           </div> <!--#Third-->
       
-          <div id="fourth">
+          <div id="fourth" class="storyelement">
             <div class="hsContent"
                       data-center="opacity: 1"
                       data-center-top="opacity: 0"
@@ -157,7 +166,7 @@
             </div>
           </div> <!--#fourth-->
         
-          <div id="fifth">
+          <div id="fifth" class="storyelement">
             <div class="hsContent"
                       data-center="opacity: 1"
                       data-center-top="opacity: 0"
@@ -168,7 +177,7 @@
             </div>
           </div> <!--#fifth-->
         
-          <div id="sixth">
+          <div id="sixth" class="storyelement">
             <div class="hsContent"
                       data-center="opacity: 1"
                       data-center-top="opacity: 0"
@@ -179,7 +188,7 @@
             </div>
           </div> <!--#sixth-->
         
-          <div id="seventh">
+          <div id="seventh" class="storyelement">
             <div class="hsContent"
                       data-center="opacity: 1"
                       data-center-top="opacity: 0"
@@ -191,13 +200,8 @@
           </div> <!--#seventh-->
 
         </div> <!--.story-->
-          <!-- 
-              <div id="responseOuter">
-                <div id="divYes" class="response"> Yes </div>
-                <div id="divMaybe" class="response"> Maybe </div>
-                <div id="divNo" class="response"> No </div>
-              </div>
-           -->
+           
+           
     {% else %}
       <p>Not found :( Sign in as a different user? <a href="{{ logout_url }}"> Logout </a> </p>
     {% endif %}
