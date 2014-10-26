@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 {% autoescape true %}
 <html>
-   <head>
-     <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+  <head>
+    <meta name=viewport content='width=700'>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+    <link type="text/css" rel="stylesheet" href="/stylesheets/parallax.css" />
 
-     <!-- Grab the JQuery API from the Google servers -->
-     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <!-- Grab the JQuery API from the Google servers -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+
+    <!-- Scripts for parallax  -->
+    <script type="text/javascript" src="scripts/jquery.parallax-1.1.3.js"></script>
+    <script type="text/javascript" src="scripts/jquery.localscroll-1.2.7-min.js"></script>
+    <script type="text/javascript" src="scripts/jquery.scrollTo-1.4.2-min.js"></script>
+    <script type="text/javascript" src="scripts/skrollr.js"></script>
   
     <script type="text/javascript" charset="utf-8">
     function ResponseToDiv(response) {
@@ -30,7 +38,12 @@
       }); 
     }
   
+    var inProgress = false;
     function SetResponse(response) {
+      if (inProgress)
+        return;
+
+      inProgress = true;
       var dataString = "rsvp=" + response;
       var divName = '#' + ResponseToDiv(response);
       old = $(divName).text();
@@ -45,7 +58,7 @@
           console.log("RET " + data.retval);
           $(divName).text(old);
           DrawResponse(response);
-          $('#rsvpResult').insertBefore('<div>Success!</div>').delay(3000).fadeOut();
+          inProgress = false;
         }
       });
     }
@@ -65,29 +78,138 @@
       });
   
       DrawResponse(parseInt({{ guest.rsvp }}));
+
+      // Initiate parallaz stuff
+      $('#nav').localScroll(800);
+
+      // Init Skrollr
+      var s = skrollr.init();
+ 
+      // Refresh Skrollr after resizing our sections
+      s.refresh($('#story'));
+  
+      //.parallax(xPosition, speedFactor, outerHeight) options:
+      //xPosition - Horizontal position of the element
+      //inertia - speed to move relative to vertical scroll. Example: 0.1 is one tenth the speed of scrolling,
+      //2 is twice the speed of scrolling
+      //outerHeight (true/false) - Whether or not jQuery should use it's outerHeight option to determine when a section is in the viewport
+  
+      $('#first').parallax("50%", 0.2);
+      $('#second').parallax("50%", 0.4);
+      $('#third').parallax("50%", 0.3);
+      $('#fourth').parallax("50%", 0.23);
+      $('#fifth').parallax("50%", 0.24);
+      $('#sixth').parallax("50%", 0.25);
+      $('#seventh').parallax("50%", 0.26);
     });
     </script>
   </head>
   
   <body>
     {% if guest %}
-       <p>
-         Hi {{ guest.first_name }} {{guest.last_name }}! <br>
+        <div class="intro">
+         Hi {{ guest.first_name }} {{guest.last_name }}! If this is not you, click here.
+         <a href="{{ logout_url }}"> Logout </a>
+        </div>
 
-         <div id="divYes" class="response"> Yes </div>
-         <div id="divMaybe" class="response"> Maybe </div>
-         <div id="divNo" class="response"> No </div>
+        <div id="story">
+    <div id="static">
+      <div id ="hat" 
+                data-center="opacity: 1"
+                data-center-top="opacity: 0"
+                data--100-bottom="opacity: 0;"
+                data-anchor-target="#third">
+            </div>
+          </div><!-- static -->
 
-	<br><br><br>
-         <div id="rsvpResult"></div>
-         If this is not you, click here.
-       </p>
+          <div id="first">
+            <div class="bg"></div>
+            <div class="float-right">
+              <h2>First story sentence</h2>
+            </div>
+          </div> <!--#first-->
+  
+          <div id="second">
+            <div class="bg"></div>
+            <div class="hsContent"
+                   data-center="opacity: 1"
+                   data-center-top="opacity: 0"
+                   data--100-bottom="opacity: 0;"
+                   data-anchor-target="#second"
+            >
+              <h2>Second story sentence</h2>
+            </div>
+          </div> <!--#second-->
+      
+          <div id="third">
+            <div class="bg"></div>
+            <div class="hsContent"
+                    data-center="opacity: 1"
+                    data-center-top="opacity: 0"
+                    data--100-bottom="opacity: 0;"
+                    data-anchor-target="#third"
+            >
+              <h2>gThird sentence</h2>
+            </div>
+          </div> <!--#Third-->
+      
+          <div id="fourth">
+            <div class="bg"></div>
+            <div class="hsContent"
+                      data-center="opacity: 1"
+                      data-center-top="opacity: 0"
+                      data--100-bottom="opacity: 0;"
+                      data-anchor-target="#fourth"
+                  >
+              <h2>gfourth sentence</h2>
+            </div>
+          </div> <!--#fourth-->
+        
+          <div id="fifth">
+            <div class="bg"></div>
+            <div class="hsContent"
+                      data-center="opacity: 1"
+                      data-center-top="opacity: 0"
+                      data--100-bottom="opacity: 0;"
+                      data-anchor-target="#fifth"
+            >
+              <h2>gfifth sentence</h2>
+            </div>
+          </div> <!--#fifth-->
+        
+          <div id="sixth">
+            <div class="bg"></div>
+            <div class="hsContent"
+                      data-center="opacity: 1"
+                      data-center-top="opacity: 0"
+                      data--100-bottom="opacity: 0;"
+                      data-anchor-target="#sixth"
+            >
+              <h2>gsixth sentence</h2>
+            </div>
+          </div> <!--#sixth-->
+        
+          <div id="seventh">
+            <div class="bg"></div>
+            <div class="hsContent"
+                      data-center="opacity: 1"
+                      data-center-top="opacity: 0"
+                      data--100-bottom="opacity: 0;"
+                      data-anchor-target="#seventh"
+            >
+              <h2>gseventh sentence</h2>
+            </div>
+          </div> <!--#seventh-->
+        </div> <!--.story-->
+  
+        <div class="responseOuter">
+          <div id="divYes" class="response"> Yes </div>
+          <div id="divMaybe" class="response"> Maybe </div>
+          <div id="divNo" class="response"> No </div>
+        </div>
     {% else %}
-      <p>Not found :( Sign in as a different user?</p>
+      <p>Not found :( Sign in as a different user? <a href="{{ logout_url }}"> Logout </a> </p>
     {% endif %}
-
-    <a href="{{ logout_url }}"> Logout </a>
-
   </body>
 <html>
 {% endautoescape %}
