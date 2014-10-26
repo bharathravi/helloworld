@@ -1,11 +1,7 @@
 /* # Stolen fromPeter River Flat Button
  * ==================================================*/
-.intro {
-  position: relative;
-  float: top;
-}
 .responseOuter {
-  height: 80px;
+  height: 80%;
 }
 .response {
   position: center;
@@ -25,9 +21,6 @@
   cursor: pointer;
   -webkit-box-shadow: inset 0 -2px #2a8bcc;
   box-shadow: inset 0 -2px #2a8bcc;
-}
-.response:hover {
-  background: #71b7e6
 }
 .response:active {
   top: 1px;

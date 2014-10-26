@@ -3,7 +3,6 @@
 <html>
   <head>
     <meta name=viewport content='width=700'>
-    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
     <link type="text/css" rel="stylesheet" href="/stylesheets/parallax.css" />
 
     <!-- Grab the JQuery API from the Google servers -->
@@ -48,7 +47,7 @@
       var divName = '#' + ResponseToDiv(response);
       old = $(divName).text();
       $(divName).text("Saving...");
-      
+ 
       console.log(dataString);
       $.ajax({
         type: "POST",
@@ -94,43 +93,38 @@
       //2 is twice the speed of scrolling
       //outerHeight (true/false) - Whether or not jQuery should use it's outerHeight option to determine when a section is in the viewport
   
-      $('#first').parallax("50%", 0.2);
-      $('#second').parallax("50%", 0.4);
-      $('#third').parallax("50%", 0.3);
-      $('#fourth').parallax("50%", 0.23);
-      $('#fifth').parallax("50%", 0.24);
-      $('#sixth').parallax("50%", 0.25);
-      $('#seventh').parallax("50%", 0.26);
+//      $('#first').parallax("50%", 0.2);
+//      $('#second').parallax("50%", 0.4);
+//      $('#third').parallax("50%", 0.3);
+//      $('#fourth').parallax("50%", 0.23);
+//      $('#fifth').parallax("50%", 0.24);
+//      $('#sixth').parallax("50%", 0.25);
     });
     </script>
   </head>
   
   <body>
     {% if guest %}
-        <div class="intro">
+       <div id="intro">
          Hi {{ guest.first_name }} {{guest.last_name }}! If this is not you, click here.
          <a href="{{ logout_url }}"> Logout </a>
-        </div>
+       </div>
 
         <div id="story">
-    <div id="static">
-      <div id ="hat" 
+          <div id="static">
+            <div id ="hat" 
                 data-center="opacity: 1"
                 data-center-top="opacity: 0"
                 data--100-bottom="opacity: 0;"
                 data-anchor-target="#third">
-            </div>
+            </div><!-- hat -->
           </div><!-- static -->
 
           <div id="first">
-            <div class="bg"></div>
-            <div class="float-right">
-              <h2>First story sentence</h2>
-            </div>
+            <h2>First story sentence</h2>
           </div> <!--#first-->
   
           <div id="second">
-            <div class="bg"></div>
             <div class="hsContent"
                    data-center="opacity: 1"
                    data-center-top="opacity: 0"
@@ -142,7 +136,6 @@
           </div> <!--#second-->
       
           <div id="third">
-            <div class="bg"></div>
             <div class="hsContent"
                     data-center="opacity: 1"
                     data-center-top="opacity: 0"
@@ -154,7 +147,6 @@
           </div> <!--#Third-->
       
           <div id="fourth">
-            <div class="bg"></div>
             <div class="hsContent"
                       data-center="opacity: 1"
                       data-center-top="opacity: 0"
@@ -166,7 +158,6 @@
           </div> <!--#fourth-->
         
           <div id="fifth">
-            <div class="bg"></div>
             <div class="hsContent"
                       data-center="opacity: 1"
                       data-center-top="opacity: 0"
@@ -178,7 +169,6 @@
           </div> <!--#fifth-->
         
           <div id="sixth">
-            <div class="bg"></div>
             <div class="hsContent"
                       data-center="opacity: 1"
                       data-center-top="opacity: 0"
@@ -190,7 +180,6 @@
           </div> <!--#sixth-->
         
           <div id="seventh">
-            <div class="bg"></div>
             <div class="hsContent"
                       data-center="opacity: 1"
                       data-center-top="opacity: 0"
@@ -200,13 +189,15 @@
               <h2>gseventh sentence</h2>
             </div>
           </div> <!--#seventh-->
+
         </div> <!--.story-->
-  
-        <div class="responseOuter">
-          <div id="divYes" class="response"> Yes </div>
-          <div id="divMaybe" class="response"> Maybe </div>
-          <div id="divNo" class="response"> No </div>
-        </div>
+          <!-- 
+              <div id="responseOuter">
+                <div id="divYes" class="response"> Yes </div>
+                <div id="divMaybe" class="response"> Maybe </div>
+                <div id="divNo" class="response"> No </div>
+              </div>
+           -->
     {% else %}
       <p>Not found :( Sign in as a different user? <a href="{{ logout_url }}"> Logout </a> </p>
     {% endif %}

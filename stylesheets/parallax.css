@@ -12,99 +12,94 @@ License: http://creativecommons.org/licenses/by-sa/3.0/ (Attribution Share Alike
 @charset "utf-8";
 /* CSS Document */
 
+html { margin: 0px; padding: 0px; border: 0px; }
 body{
 	margin: 0;
 	min-width: 980px;
 	padding: 0;
+        border: 0px;
+	height: 100%;
 }
 
-p{
-	margin: 0 0 20px 0;	
+#responseOuter {
+  width: 100%;
+  height: 1%;
+  padding: 1%;
+  z-index: 700;
 }
 
-p{
-	font-family:"Proxima Nova Light", 'Helvetica Neue', Arial, Helvetica, sans-serif;
-	font-size-adjust:0.488;
-	font-weight:200;
-	font-style:normal;
+.response {
+  position: center;
+  float: left;
+  width: 30%;
+  height: 100%;
+  padding-top: 0;
+  margin-right: 1%;
+  margin-left: 1%;
+  font-size: 48px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  background: #3498db;
+/*  border: 2px solid #2a8bcc; */
+  border-radius: 10px;
+  cursor: pointer;
+  -webkit-box-shadow: inset 0 -2px #2a8bcc;
+  box-shadow: inset 0 -2px #2a8bcc;
+}
+.response:active {
+  top: 1px;
+  background: #71b7e6
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
-img{
-	border: 0;
+.selected {
+  font-weight: bold;
+  background: #ff5050
 }
 
-h1, #pixels{
-	font-family:"Museo 900", Verdana, serif;
-	font-size-adjust:0.40;
-	font-weight:700;
-	font-style:normal;
-}
-
-h2{
-	font-family:"Beau Sans Pro Book", Verdana, sans-serif;
-	font-size-adjust:0.531;
-	font-weight:500;
-	font-style:normal;
-}
-
-#header h1, #pixels{
-	color: #48941A;
-}
-
-.float-left{
-	float: left;	
-	margin: 0 0 0 20px;
-}
-
-.float-right{
-	float: right;
-	margin: 0 20px 0 0;
-}
-
-.center{
-	font-size: 2.5em;
-	padding: 80px 0 0 0;
-	text-align: center;
-}
-
-#nav{
-	list-style: none;
-	position: fixed;
-	right: 20px;
-}
-
-#nav li{
-	margin: 0 0 15px 0;	
-}
-
-#header, #intro, #second{
-	width: 100%;
+#intro {
+  position: fixed;
+  top: 0px;
+  height: 1%;
+  padding: 1%;
+  width: 100%;
+  background: #3498db;
+  -webkit-box-shadow: inset 0 -2px #2a8bcc;
+  box-shadow: inset 0 -2px #2a8bcc;
+  border-bottom: solid;
+  z-index: 500;
+  vertical-align: middle;
+  font-size: large;
 }
 
 #story{
 	margin: 0 auto;
 	padding: 0;
 	position: relative;
-	height : 800px;
 	width: 100%;
 	z-index: 200;
 }
 
 #static{
-	background: url(images/us.png) 100% 0 no-repeat fixed;
-	background-size: 40% 70%;
+	position: fixed;
+	top: 0px;
+	background: url(/images/us.png) 100% 0 no-repeat fixed;
+	background-size: 50% 60%;
 	background-position: center bottom;
 	height: 800px;
 	margin: 0 auto;
 	padding: 0;
-	position: fixed;
 	width: 100%;
 	overflow: hidden;
 	z-index: 200;
 }
+
 #hat{
-	background: url(images/hats.png) 100% 0 no-repeat fixed;
-	background-size: 40% 70%;
+	background: url(/images/hats.png) 100% 0 no-repeat fixed;
+	background-size: 50% 60%;
 	background-position: center bottom;
 	height: 800px;
 	margin: 0 auto;
@@ -115,68 +110,59 @@ h2{
 	z-index: 300;
 }
 
-
 #first{
-	background: url(images/firstBG.jpg) 100% 0 no-repeat fixed;
+	background: url(/images/marsRover.png) 100% 0 no-repeat fixed;
 	background-size: 100% 100%;
 	color: white;
 	height: 800px;
 	margin: 0 auto;
-	
-	
 	width: 100%;
 }
 
 
 #second{
-	background: url(images/treeBeach.png) 50% 0 no-repeat fixed;
-		background-size: 100% 100%;
-		
+	background: url(/images/treeBeach.png) 50% 0 no-repeat fixed;
+	background-size: 100% 100%;
 	color: white;
 	height: 800px;
 	margin: 0 auto;
-	
-	
 	width: 100%;
 }
 
 #third{
-	background: url(images/snow.png) 50% 0 no-repeat fixed;
-		background-size: 100% 100%;
-	color: white;
-	height: 800px;
-	
-	width: 100%;
-}
-#fourth{
-	background: url(images/thirdBG.jpg) 50% 0 no-repeat fixed;
-	color: white;
-	height: 800px;
-
-	width: 100%;
-}
-#fifth{
-	background: url(images/marsRover.png) 50% 0 no-repeat fixed;
+	background: url(/images/snow.png) 50% 0 no-repeat fixed;
 	background-size: 100% 100%;
 	color: white;
 	height: 800px;
-	
+	width: 100%;
+}
+
+#fourth{
+	background: url(/images/treeBeach.png) 50% 0 no-repeat fixed;
+	color: white;
+	height: 800px;
+	width: 100%;
+}
+
+#fifth{
+	background: url(/images/marsRover.png) 50% 0 no-repeat fixed;
+	background-size: 100% 100%;
+	color: white;
+	height: 800px;
 	width: 100%;
 }
 
 #sixth{
-	background: url(images/thirdBG.jpg) 50% 0 no-repeat fixed;
+	background: url(/images/snow.png) 50% 0 no-repeat fixed;
 	color: white;
 	height: 800px;
-
 	width: 100%;
 }
 
 #seventh{
-	background: url(images/thirdBG.jpg) 50% 0 no-repeat fixed;
+	background: url(/images/snow.png) 50% 0 no-repeat fixed;
 	color: white;
 	height: 800px;
-	
 	width: 100%;
 }
 .hsContent {
