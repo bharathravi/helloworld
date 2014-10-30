@@ -4,6 +4,7 @@
   <head>
     <meta name=viewport content='width=700'>
     <link type="text/css" rel="stylesheet" href="/stylesheets/parallax.css" />
+    <link type="text/css" rel="stylesheet" href="/stylesheets/snowflakes.css" />
 
     <!-- Grab the JQuery API from the Google servers -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
@@ -12,9 +13,10 @@
     <script type="text/javascript" src="scripts/jquery.parallax-1.1.3.js"></script>
     <script type="text/javascript" src="scripts/jquery.localscroll-1.2.7-min.js"></script>
     <script type="text/javascript" src="scripts/jquery.scrollTo-1.4.2-min.js"></script>
+    <script type="text/javascript" src="scripts/snowflakes.js"></script>
     <script type="text/javascript" src="scripts/skrollr.js"></script>
-  
     <script type="text/javascript" charset="utf-8">
+
     function ResponseToDiv(response) {
       if (response == 1) { 
         return "divYes";
@@ -24,6 +26,7 @@
         return "divNo";
       }
     }
+
     function DrawResponse(response) {
       var divName = ResponseToDiv(response);
   
@@ -86,6 +89,9 @@
  
       // Refresh Skrollr after resizing our sections
       s.refresh($('#story'));
+
+      var snowflakes = new Snowflakes('third','snowflakesContainer');^M
+      snowflakes.create(200);
   
       //.parallax(xPosition, speedFactor, outerHeight) options:
       //xPosition - Horizontal position of the element
@@ -111,14 +117,44 @@
        </div>
 
         <div id="story">
-          <div id="static">
-            <div id ="hat" 
+          <div id="defaultdress" class="static">
+
+            <div id ="beachdress" class="static" 
+                data-center="opacity: 1"
+                data-center-top="opacity: 0"
+                data--100-bottom="opacity: 0;"
+                data-anchor-target="#second">
+            </div><!-- beachdress -->
+
+            <div id ="winterdress" class="static" 
                 data-center="opacity: 1"
                 data-center-top="opacity: 0"
                 data--100-bottom="opacity: 0;"
                 data-anchor-target="#third">
-            </div><!-- hat -->
-            <div id="responseOuter"
+            </div><!-- winterdress -->
+
+            <div id ="minedress" class="static" 
+                data-center="opacity: 1"
+                data-center-top="opacity: 0"
+                data--100-bottom="opacity: 0;"
+                data-anchor-target="#fourth">
+            </div><!-- minedress -->
+
+            <div id ="astrodress" class="static" 
+                data-center="opacity: 1"
+                data-center-top="opacity: 0"
+                data--100-bottom="opacity: 0;"
+                data-anchor-target="#fifth">
+            </div><!-- astrodress -->
+
+            <div id ="weddingdress" class="static" 
+                data-center="opacity: 1"
+                data-center-top="opacity: 0"
+                data--100-bottom="opacity: 0;"
+                data-anchor-target="#sixth">
+            </div><!-- weddingdress -->
+
+            <div id="responseOuter" class="static"
                 data-center="opacity: 1"
                 data-center-top="opacity: 0"
                 data--100-bottom="opacity: 0;"
@@ -200,7 +236,6 @@
           </div> <!--#seventh-->
 
         </div> <!--.story-->
-           
            
     {% else %}
       <p>Not found :( Sign in as a different user? <a href="{{ logout_url }}"> Logout </a> </p>

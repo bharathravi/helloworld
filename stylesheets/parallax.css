@@ -12,13 +12,13 @@ License: http://creativecommons.org/licenses/by-sa/3.0/ (Attribution Share Alike
 @charset "utf-8";
 /* CSS Document */
 
-html { margin: 0px; padding: 0px; border: 0px; }
+html { margin: 0px; padding: 0px; border: 0px; height:100%;}
 body{
 	margin: 0;
 	min-width: 980px;
 	padding: 0;
         border: 0px;
-	height: 100%;
+	min-height: 100%;
 }
 
 #responseOuter {
@@ -26,7 +26,7 @@ body{
   height: 10%;
   padding: 1%;
   position: fixed;
-  top: 30%;
+  bottom: 70%;
   left: 0%;
   z-index: 700;
 }
@@ -87,87 +87,89 @@ body{
 	z-index: 200;
 }
 
-#static{
-	position: fixed;
-	top: 0px;
-	background: url(/images/us.png) 100% 0 no-repeat fixed;
-	background-size: 50% 60%;
-	background-position: center bottom;
-	height: 800px;
-	margin: 0 auto;
-	padding: 0;
-	width: 100%;
-	overflow: hidden;
+.static {
+  position: fixed;
+  top: 0px;
+  height: 800px;
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
+
+}
+
+#defaultdress{
+	background: url(/images/us.png) 50% 0 no-repeat fixed;
+  background-position: center bottom;
 	z-index: 200;
 }
 
-#hat{
-	background: url(/images/hats.png) 100% 0 no-repeat fixed;
-	background-size: 50% 60%;
-	background-position: center bottom;
-	height: 800px;
-	margin: 0 auto;
-	padding: 0;
-	position: fixed;
-	width: 100%;
-	overflow: hidden;
+#beachdress{
+	background: url(/images/beach.png) 50% 0 no-repeat fixed;
+  background-position: center bottom;
 	z-index: 300;
+}
+
+#winterdress{
+	background: url(/images/winter.png) 50% 0 no-repeat fixed;
+  background-position: center bottom;
+	z-index: 300;
+}
+
+#minedress{
+	background: url(/images/mine.png) 50% 0 no-repeat fixed;
+  background-position: center bottom;
+	z-index: 300;
+}
+
+#astrodress{
+	background: url(/images/astro.png) 50% 0 no-repeat fixed;
+  background-position: center bottom;
+	z-index: 300;
+}
+
+#weddingdress{
+	background: url(/images/wedding.png) 50% 0 no-repeat fixed;
+  background-position: center bottom;
+	z-index: 300;
+}
+
+.storyelement {
+	background-size: 100%;
+	color: white;
+	height: 0px;
+        padding-bottom: 800px;
+	margin: 0 auto;
+	width: 100%;
 }
 
 #first{
 	background: url(/images/marsRover.png) 100% 0 no-repeat fixed;
-	background-size: 100% 100%;
-	color: white;
-	height: 800px;
-	margin: 0 auto;
-	width: 100%;
 }
 
 
 #second{
 	background: url(/images/treeBeach.png) 50% 0 no-repeat fixed;
-	background-size: 100% 100%;
-	color: white;
-	height: 800px;
-	margin: 0 auto;
-	width: 100%;
 }
 
 #third{
 	background: url(/images/snow.png) 50% 0 no-repeat fixed;
-	background-size: 100% 100%;
-	color: white;
-	height: 800px;
-	width: 100%;
 }
 
 #fourth{
-	background: url(/images/treeBeach.png) 50% 0 no-repeat fixed;
-	color: white;
-	height: 800px;
-	width: 100%;
+	background: url(/images/mine-back.png) 50% 0 no-repeat fixed;
 }
 
 #fifth{
 	background: url(/images/marsRover.png) 50% 0 no-repeat fixed;
-	background-size: 100% 100%;
-	color: white;
-	height: 800px;
-	width: 100%;
 }
 
 #sixth{
-	background: url(/images/snow.png) 50% 0 no-repeat fixed;
-	color: white;
-	height: 800px;
-	width: 100%;
+	background: url(/images/treeBeach.png) 50% 0 no-repeat fixed;
 }
 
 #seventh{
-	background: url(/images/snow.png) 50% 0 no-repeat fixed;
-	color: white;
-	height: 800px;
-	width: 100%;
+	background: url(/images/treeBeach.png) 50% 0 no-repeat fixed;
 }
 .hsContent {
     margin-left: -450px;
