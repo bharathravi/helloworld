@@ -34,13 +34,14 @@ html, body{
 
 #responseOuter {
   position: fixed;
-  height: 0px;
+  height: 10%;
   margin: 0 auto;
   padding: 0;
-  width: 100%;
+  width: 70%;
   overflow: hidden;
   padding: 1%;
-  bottom: 70%;
+  top: 25%;
+  left: 20%;
   z-index: 700;
 }
 
@@ -105,7 +106,7 @@ html, body{
 	margin: 0 auto;
 	padding: 0;
 	position: relative;
-	width: 100%;
+	width: 100vw;
 	z-index: 200;
 	visibility: hidden;
 }
@@ -113,10 +114,10 @@ html, body{
 .static {
   position: fixed;
   top: 0px;
-  height: 0px;
+  height: 100vh;
   margin: 0 auto;
   padding: 0;
-  width: 100%;
+  width: 100vw;
   overflow: hidden;
 
 }
@@ -159,38 +160,45 @@ html, body{
 
 .storyelement {
 	color: white;
-	height: 0px;
+	height: 100vh;
 	margin: 0 auto;
-	width: 100%;
+	width: 100vw;
 }
 
 #first{
 	background: url(/images/marsRover.png) 50% 0 no-repeat fixed;
+	background-size: 100% 100%;
 }
 
 
 #second{
 	background: url(/images/treeBeach.png) 50% 0 no-repeat fixed;
+	background-size: 100% 100%;
 }
 
 #third{
 	background: url(/images/snow.png) 50% 0 no-repeat fixed;
+	background-size: 100% 100%;
 }
 
 #fourth{
 	background: url(/images/mine-back.png) 50% 0 no-repeat fixed;
+	background-size: 100% 100%;
 }
 
 #fifth{
 	background: url(/images/marsRover.png) 50% 0 no-repeat fixed;
+	background-size: 100% 100%;
 }
 
 #sixth{
 	background: url(/images/treeBeach.png) 50% 0 no-repeat fixed;
+	background-size: 100% 100%;
 }
 
 #seventh{
 	background: url(/images/treeBeach.png) 50% 0 no-repeat fixed;
+	background-size: 100% 100%;
 }
 .hsContent {
     margin-left: -450px;
@@ -199,37 +207,36 @@ html, body{
 h2 {
     position: fixed;
     top: 70%;
-    visibility: hidden;
 }
 
 
 @keyframes fadein {
     from { opacity: 0; }
-    to   { opacity: 1; }
+    to   { opacity: 4; }
 }
 
 /* Firefox < 16 */
 @-moz-keyframes fadein {
     from { opacity: 0; }
-    to   { opacity: 1; }
+    to   { opacity: 4; }
 }
 
 /* Safari, Chrome and Opera > 12.1 */
 @-webkit-keyframes fadein {
     from { opacity: 0; }
-    to   { opacity: 1; }
+    to   { opacity: 4; }
 }
 
 /* Internet Explorer */
 @-ms-keyframes fadein {
     from { opacity: 0; }
-    to   { opacity: 1; }
+    to   { opacity: 4; }
 }
 
 /* Opera < 12.1 */
 @-o-keyframes fadein {
     from { opacity: 0; }
-    to   { opacity: 1; }
+    to   { opacity: 4; }
 
 }
 .hsContent {
@@ -237,5 +244,4 @@ h2 {
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	height: 0px;
 }
