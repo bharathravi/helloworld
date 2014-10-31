@@ -28,7 +28,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
-ADMINS = ['bharathravi1@gmail.com', 'ranjithagk@gmail.com']
+ADMINS = ['bharathravi1@gmail.com', 'ranjithagk@gmail.com', 'test@example.com']
 
 class Invitee(ndb.Model):
   """A single invitee"""
