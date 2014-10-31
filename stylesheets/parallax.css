@@ -90,7 +90,7 @@ body{
 .static {
   position: fixed;
   top: 0px;
-  height: 800px;
+  height: 100vh;
   margin: 0 auto;
   padding: 0;
   width: 100%;
@@ -135,16 +135,14 @@ body{
 }
 
 .storyelement {
-	background-size: 100%;
 	color: white;
-	height: 0px;
-        padding-bottom: 800px;
+	height: 100vh;
 	margin: 0 auto;
 	width: 100%;
 }
 
 #first{
-	background: url(/images/marsRover.png) 100% 0 no-repeat fixed;
+	background: url(/images/marsRover.png) 50% 0 no-repeat fixed;
 }
 
 
