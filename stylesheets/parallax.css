@@ -129,32 +129,38 @@ html, body{
 }
 
 #beachdress{
-	background: url(/images/beach.png) 50% 0 no-repeat fixed;
+	background: url(/images/beachdress.png) 50% 0 no-repeat fixed;
   background-position: center bottom;
 	z-index: 300;
 }
 
 #winterdress{
-	background: url(/images/winter.png) 50% 0 no-repeat fixed;
+	background: url(/images/winterdress.png) 50% 0 no-repeat fixed;
   background-position: center bottom;
 	z-index: 300;
 }
 
 #minedress{
-	background: url(/images/mine.png) 50% 0 no-repeat fixed;
+	background: url(/images/mountaindress.png) 50% 0 no-repeat fixed;
   background-position: center bottom;
 	z-index: 300;
 }
 
 #astrodress{
-	background: url(/images/astro.png) 50% 0 no-repeat fixed;
+	background: url(/images/astrodress.png) 50% 0 no-repeat fixed;
   background-position: center bottom;
 	z-index: 300;
 }
 
 #weddingdress{
-	background: url(/images/wedding.png) 50% 0 no-repeat fixed;
+	background: url(/images/weddingdress.png) 50% 0 no-repeat fixed;
   background-position: center bottom;
+	z-index: 300;
+}
+
+#weddingdress{
+	background: url(/images/weddingfamilydress.png) 50% 0 no-repeat fixed;
+	background-position: center bottom;
 	z-index: 300;
 }
 
@@ -166,38 +172,38 @@ html, body{
 }
 
 #first{
-	background: url(/images/marsRover.png) 50% 0 no-repeat fixed;
+	background: url(/images/beachbg.png) 50% 0 no-repeat fixed;
 	background-size: 100% 100%;
 }
 
 
 #second{
-	background: url(/images/treeBeach.png) 50% 0 no-repeat fixed;
+	background: url(/images/beachbg.png) 50% 0 no-repeat fixed;
 	background-size: 100% 100%;
 }
 
 #third{
-	background: url(/images/snow.png) 50% 0 no-repeat fixed;
+	background: url(/images/snowbg.png) 50% 0 no-repeat fixed;
 	background-size: 100% 100%;
 }
 
 #fourth{
-	background: url(/images/mine-back.png) 50% 0 no-repeat fixed;
+	background: url(/images/mountainbg.png) 50% 0 no-repeat fixed;
 	background-size: 100% 100%;
 }
 
 #fifth{
-	background: url(/images/marsRover.png) 50% 0 no-repeat fixed;
+	background: url(/images/marsbg.png) 50% 0 no-repeat fixed;
 	background-size: 100% 100%;
 }
 
 #sixth{
-	background: url(/images/treeBeach.png) 50% 0 no-repeat fixed;
+	background: url(/images/weddingbg.png) 50% 0 no-repeat fixed;
 	background-size: 100% 100%;
 }
 
 #seventh{
-	background: url(/images/treeBeach.png) 50% 0 no-repeat fixed;
+	background: url(/images/weddingbg.png) 50% 0 no-repeat fixed;
 	background-size: 100% 100%;
 }
 .hsContent {
