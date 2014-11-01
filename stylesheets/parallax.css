@@ -14,21 +14,26 @@ License: http://creativecommons.org/licenses/by-sa/3.0/ (Attribution Share Alike
 
 html, body{
 	height: 100%;
+	width: 100vw;
 	min-height: 100%;
         background-color: #000000;
-
+	margin: 0;
+	padding: 0;
 }
 
 .loading {
         background: url('/images/ico_loading.gif') no-repeat center center;
 }
 
-.loaded section,
-.no-js section {
+.loadingStory {
+        opacity: 0;
+}
+
+.loaded {
         opacity: 1;
-        -webkit-transition: opacity 8s ease-out;
-        -moz-transition: opacity 8s ease-out;
-        transition: opacity 8s ease-out;
+        -webkit-transition: opacity 0.5s ease-in;
+        -moz-transition: opacity 0.5s ease-in;
+        transition: opacity 0.5s ease-in;
 
 }
 
@@ -90,25 +95,30 @@ html, body{
 #intro {
   position: fixed;
   top: 0px;
-  height: 1%;
-  padding: 1%;
-  width: 100%;
-  background: #3498db;
-  -webkit-box-shadow: inset 0 -2px #2a8bcc;
-  box-shadow: inset 0 -2px #2a8bcc;
-  border-bottom: solid;
+  height: 2%;
+  padding: 2%;
+  width: 100vw;
+  background: #3385FF;
+  -webkit-box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.5);
+  box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.5);
   z-index: 500;
   vertical-align: middle;
-  font-size: large;
+  font-size: x-large;
+  color: white;
+}
+
+#intro a {
+  color: white;
+  font-style: italic;
 }
 
 #story{
-	margin: 0 auto;
+	margin: 0;
 	padding: 0;
 	position: relative;
 	width: 100vw;
 	z-index: 200;
-	visibility: hidden;
 }
 
 .static {
@@ -124,36 +134,42 @@ html, body{
 
 #defaultdress{
 	background: url(/images/us.png) 50% 0 no-repeat fixed;
-  background-position: center bottom;
+        background-size: 50%;
+        background-position: center bottom;
 	z-index: 200;
 }
 
 #beachdress{
 	background: url(/images/beachdress.png) 50% 0 no-repeat fixed;
-  background-position: center bottom;
+        background-size: 50%;
+        background-position: center bottom;
 	z-index: 300;
 }
 
 #winterdress{
 	background: url(/images/winterdress.png) 50% 0 no-repeat fixed;
+        background-size: 50%;
   background-position: center bottom;
 	z-index: 300;
 }
 
 #minedress{
 	background: url(/images/mountaindress.png) 50% 0 no-repeat fixed;
+        background-size: 50%;
   background-position: center bottom;
 	z-index: 300;
 }
 
 #astrodress{
 	background: url(/images/astrodress.png) 50% 0 no-repeat fixed;
+       background-size: 50%;
   background-position: center bottom;
 	z-index: 300;
 }
 
 #weddingdress{
 	background: url(/images/weddingdress.png) 50% 0 no-repeat fixed;
+        background-size: 50%;
   background-position: center bottom;
 	z-index: 300;
 }
