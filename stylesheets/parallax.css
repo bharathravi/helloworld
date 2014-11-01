@@ -22,7 +22,7 @@ html, body{
 }
 
 .loading {
-        background: url('/images/ico_loading.gif') no-repeat center center;
+        background: url('/images/ajax_loader.gif') no-repeat center center;
 }
 
 .loadingStory {
@@ -182,38 +182,38 @@ html, body{
 }
 
 #first{
-	background: url(/images/beachbg.png) 50% 0 no-repeat fixed;
+	background: url(/images/beachbg.jpg) 50% 0 no-repeat fixed;
 	background-size: 100% 100%;
 }
 
 
 #second{
-	background: url(/images/beachbg.png) 50% 0 no-repeat fixed;
+	background: url(/images/beachbg.jpg) 50% 0 no-repeat fixed;
 	background-size: 100% 100%;
 }
 
 #third{
-	background: url(/images/snowbg.png) 50% 0 no-repeat fixed;
+	background: url(/images/snowbg.jpg) 50% 0 no-repeat fixed;
 	background-size: 100% 100%;
 }
 
 #fourth{
-	background: url(/images/mountainbg.png) 50% 0 no-repeat fixed;
+	background: url(/images/mountainbg.jpg) 50% 0 no-repeat fixed;
 	background-size: 100% 100%;
 }
 
 #fifth{
-	background: url(/images/marsbg.png) 50% 0 no-repeat fixed;
+	background: url(/images/marsbg.jpg) 50% 0 no-repeat fixed;
 	background-size: 100% 100%;
 }
 
 #sixth{
-	background: url(/images/weddingbg.png) 50% 0 no-repeat fixed;
+	background: url(/images/weddingbg.jpg) 50% 0 no-repeat fixed;
 	background-size: 100% 100%;
 }
 
 #seventh{
-	background: url(/images/weddingbg.png) 50% 0 no-repeat fixed;
+	background: url(/images/weddingbg.jpg) 50% 0 no-repeat fixed;
 	background-size: 100% 100%;
 }
 .hsContent {
