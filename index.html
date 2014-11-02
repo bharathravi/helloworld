@@ -42,12 +42,12 @@
     }
   
     var inProgress = false;
-    function SetResponse(response) {
+    function SetResponse(uuid, response) {
       if (inProgress)
         return;
 
       inProgress = true;
-      var dataString = "rsvp=" + response;
+      var dataString = "rsvp=" + response + "&uuid=" + uuid;
       var divName = '#' + ResponseToDiv(response);
       old = $(divName).text();
       $(divName).text("Saving...");
@@ -109,16 +109,17 @@
 
 
       console.log("READY");
+      var uuid = {{  guest.uuid }}
       $("#divYes").click(function(){
-        SetResponse(1);
+        SetResponse(uuid, 1);
       });
   
       $("#divMaybe").click(function(){
-        SetResponse(0);
+        SetResponse(uuid, 0);
       });
   
       $("#divNo").click(function(){
-        SetResponse(-1);
+        SetResponse(uuid, -1);
       });
   
       DrawResponse(parseInt({{ guest.rsvp }}));
@@ -169,6 +170,11 @@
            
        <div id="intro">
          Hi {{ guest.first_name }} {{guest.last_name }}! 
+       </div>
+
+        <div id="story" class="loadingStory">
+          <div id="defaultdress" class="static">
+
             <div id="responseOuter" class="static"
                 data-center="opacity: 3"
                 data-center-top="opacity: 0;"
@@ -177,14 +183,6 @@
                 <div id="divMaybe" class="response"> Maybe </div>
                 <div id="divNo" class="response"> No </div>
             </div><!-- responseOuter -->
-         <div style="float:right">
-         Not {{ guest.first_name }}?
-         <a href="{{ logout_url }}"> Sign Out here</a>.
-         </div>
-       </div>
-
-        <div id="story" class="loadingStory">
-          <div id="defaultdress" class="static">
 
             <div id ="beachdress" class="static" 
                 data-center="opacity: 10"
