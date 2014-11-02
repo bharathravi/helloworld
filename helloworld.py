@@ -166,12 +166,11 @@ class Emailer(AdminPage):
     invitees = query.fetch()
  
     for invitee in invitees:
-      if not mail.is_email_valid(invitee.email)
-        self.response.write('Invalid email: ' + invitee.email
+      if not mail.is_email_valid(invitee.email):
+        self.response.write('Invalid email: ' + invitee.email)
         return
       else:
-        sender_address = ('Ranjitha Gurunath Kulkarni <ranjithagk@gmail.com>,'
-                          'Bharath Ravi <bharathravi1@gmail.com>')
+        sender_address = ('Ranjitha Gurunath Kulkarni <ranjithagk@gmail.com>')
         receiver_address = invitee.email
         subject = "Wedding invitation"
         content = CONTENT % (invitee.first_name, invitee.last_name, invitee.uuid) 
@@ -182,4 +181,5 @@ application = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/admin', GuestManager),
     ('/rsvp', RSVP),
+    ('/email', Emailer),
 ], debug=True)
