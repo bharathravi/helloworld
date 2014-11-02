@@ -138,7 +138,19 @@ html, body{
         background-position: center bottom;
 	z-index: 200;
 }
+#invitationzerotext{
+background: url(/images/introSentence0.png) 50% 0 no-repeat fixed;
+	background-size: 100%;
+        background-position: center bottom;
+	z-index: 300;
+}
 
+#scrollimage{
+background: url(/images/scroll.png) 50% 0 no-repeat fixed;
+	background-size: 100%;
+        background-position: center bottom;
+	z-index: 300;
+}
 #beachdress{
 	background: url(/images/beachdress.png) 50% 0 no-repeat fixed;
 	background-size: 100%;
@@ -194,7 +206,7 @@ html, body{
 	width: 100vw;
 }
 #zeroth{
-	background: url(/images/.jpg) 50% 0 no-repeat fixed;
+	background: url(/images/invitebg.jpg) 50% 0 no-repeat fixed;
 	background-size: 100% 100%;
 }
 #first{
