@@ -162,10 +162,21 @@
 	   <img src="/images/astrodress.png" width="1" height="1" alt="" />
 	   <img src="/images/weddingdress.png" width="1" height="1" alt="" />
 	   <img src="/images/weddingfamilydress.png" width="1" height="1" alt="" />
+	   <img src="/images/IntroSentence1.png" width="1" height="1" alt="" />
+	   <img src="/images/IntroSentence2.png" width="1" height="1" alt="" />
+	   <img src="/images/weddingfamilydress.png" width="1" height="1" alt="" />
 	</div>
            
        <div id="intro">
          Hi {{ guest.first_name }} {{guest.last_name }}! 
+            <div id="responseOuter" class="static"
+                data-center="opacity: 3"
+                data-center-top="opacity: 0;"
+                data-anchor-target="#seventh">
+                <div id="divYes" class="response"> Yes </div>
+                <div id="divMaybe" class="response"> Maybe </div>
+                <div id="divNo" class="response"> No </div>
+            </div><!-- responseOuter -->
          <div style="float:right">
          Not {{ guest.first_name }}?
          <a href="{{ logout_url }}"> Sign Out here</a>.
@@ -215,14 +226,6 @@
                 data-anchor-target="#seventh">
             </div><!-- weddingfamilydress -->
 
-            <div id="responseOuter" class="static"
-                data-center="opacity: 3"
-                data-center-top="opacity: 0;"
-                data-anchor-target="#seventh">
-                <div id="divYes" class="response"> Yes </div>
-                <div id="divMaybe" class="response"> Maybe </div>
-                <div id="divNo" class="response"> No </div>
-            </div><!-- responseOuter -->
           </div><!-- static -->
 
           <div id="first" class="storyelement">
