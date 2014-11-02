@@ -6,6 +6,7 @@
     <link type="text/css" rel="stylesheet" href="/stylesheets/parallax.css" />
     <link type="text/css" rel="stylesheet" href="/stylesheets/snowflakes.css" />
 
+{% if guest %}
     <!-- Grab the JQuery API from the Google servers -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 
@@ -148,7 +149,6 @@
   </head>
   
   <body class="loading">
-    {% if guest %}
 	<div id="preload">
 	   <img src="/images/beachbg.jpg" width="1" height="1" alt="" />
 	   <img src="/images/snowbg.jpg" width="1" height="1" alt="" />
@@ -305,7 +305,10 @@
 
         </div> <!--.story-->
     {% else %}
-      <p>Not found :( Sign in as a different user? <a href="{{ logout_url }}"> Logout </a> </p>
+  <body>
+	<div id="notfound">
+      <p> It looks like you don't have access to this page :( Sign in as a different user? <a href="{{ logout_url }}"> Logout </a> </p>
+       </div>
     {% endif %}
   </body>
 <html>
