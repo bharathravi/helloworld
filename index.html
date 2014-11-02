@@ -6,6 +6,7 @@
     <link type="text/css" rel="stylesheet" href="/stylesheets/parallax.css" />
     <link type="text/css" rel="stylesheet" href="/stylesheets/snowflakes.css" />
 
+{% if guest %}
     <!-- Grab the JQuery API from the Google servers -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 
@@ -42,12 +43,12 @@
     }
   
     var inProgress = false;
-    function SetResponse(response) {
+    function SetResponse(uuid, response) {
       if (inProgress)
         return;
 
       inProgress = true;
-      var dataString = "rsvp=" + response;
+      var dataString = "rsvp=" + response + "&uuid=" + uuid;
       var divName = '#' + ResponseToDiv(response);
       old = $(divName).text();
       $(divName).text("Saving...");
@@ -109,16 +110,17 @@
 
 
       console.log("READY");
+      var uuid = '{{  guest.uuid }}';
       $("#divYes").click(function(){
-        SetResponse(1);
+        SetResponse(uuid, 1);
       });
   
       $("#divMaybe").click(function(){
-        SetResponse(0);
+        SetResponse(uuid, 0);
       });
   
       $("#divNo").click(function(){
-        SetResponse(-1);
+        SetResponse(uuid, -1);
       });
   
       DrawResponse(parseInt({{ guest.rsvp }}));
@@ -148,7 +150,6 @@
   </head>
   
   <body class="loading">
-    {% if guest %}
 	<div id="preload">
 	   <img src="/images/beachbg.jpg" width="1" height="1" alt="" />
 	   <img src="/images/snowbg.jpg" width="1" height="1" alt="" />
@@ -162,18 +163,26 @@
 	   <img src="/images/astrodress.png" width="1" height="1" alt="" />
 	   <img src="/images/weddingdress.png" width="1" height="1" alt="" />
 	   <img src="/images/weddingfamilydress.png" width="1" height="1" alt="" />
+	   <img src="/images/IntroSentence1.png" width="1" height="1" alt="" />
+	   <img src="/images/IntroSentence2.png" width="1" height="1" alt="" />
+	   <img src="/images/weddingfamilydress.png" width="1" height="1" alt="" />
 	</div>
            
        <div id="intro">
          Hi {{ guest.first_name }} {{guest.last_name }}! 
-         <div style="float:right">
-         Not {{ guest.first_name }}?
-         <a href="{{ logout_url }}"> Sign Out here</a>.
-         </div>
        </div>
 
         <div id="story" class="loadingStory">
           <div id="defaultdress" class="static">
+
+            <div id="responseOuter" class="static"
+                data-center="opacity: 3"
+                data-center-top="opacity: 0;"
+                data-anchor-target="#seventh">
+                <div id="divYes" class="response"> Yes </div>
+                <div id="divMaybe" class="response"> Maybe </div>
+                <div id="divNo" class="response"> No </div>
+            </div><!-- responseOuter -->
 
             <div id ="beachdress" class="static" 
                 data-center="opacity: 10"
@@ -214,8 +223,12 @@
                 data-center-top="opacity: 0;"
                 data-anchor-target="#seventh">
             </div><!-- weddingfamilydress -->
-
-            <div id="responseOuter" class="static"
+			
+			<div id ="finalinvite" class="static" 
+                data-center="opacity: 3"
+                data-center-top="opacity: 0;"
+                data-anchor-target="#eighth">
+				<div id="responseOuter" class="static"
                 data-center="opacity: 3"
                 data-center-top="opacity: 0;"
                 data-anchor-target="#seventh">
@@ -223,89 +236,30 @@
                 <div id="divMaybe" class="response"> Maybe </div>
                 <div id="divNo" class="response"> No </div>
             </div><!-- responseOuter -->
+         
+            </div><!-- finalinvite -->
           </div><!-- static -->
 
-          <div id="first" class="storyelement">
-            <div class="hsContent"
-                   data-center="opacity: 1"
-                   data-center-top="opacity: 0"
-                   data--100-bottom="opacity: 0;"
-                   data-anchor-target="#second"
-              <h2>Marriages are made in heaven, they say... so we went exploring to find this Heaven they talk so much about...</h2>
-	    </div>
-          </div> <!--#first-->
-  
-          <div id="second" class="storyelement">
-            <div class="hsContent"
-                   data-center="opacity: 1"
-                   data-center-top="opacity: 0"
-                   data--100-bottom="opacity: 0;"
-                   data-anchor-target="#second"
-            >
-              <h2>On a sunny beach</h2>
-            </div>
-          </div> <!--#second-->
-      
+		  <div id="first" class="storyelement"></div>
+          <div id="firstandahalf" class="storyelement"></div>
+          <div id="second" class="storyelement"></div>
           <div id="third" class="storyelement">
-		  <div id="snowflakesContainer" > </div>
-            <div class="hsContent"
-                    data-center="opacity: 1"
-                    data-center-top="opacity: 0"
-                    data--100-bottom="opacity: 0;"
-                    data-anchor-target="#third"
-            >
-              <h2>On a snowy hill</h2>
-            </div>
+		  <div id="snowflakesContainer" ></div>            
           </div> <!--#Third-->
-      
-          <div id="fourth" class="storyelement">
-            <div class="hsContent"
-                      data-center="opacity: 1"
-                      data-center-top="opacity: 0"
-                      data--100-bottom="opacity: 0;"
-                      data-anchor-target="#fourth"
-                  >
-              <h2>On a Mountain top</h2>
-            </div>
-          </div> <!--#fourth-->
-        
-          <div id="fifth" class="storyelement">
-            <div class="hsContent"
-                      data-center="opacity: 1"
-                      data-center-top="opacity: 0"
-                      data--100-bottom="opacity: 0;"
-                      data-anchor-target="#fifth"
-            >
-              <h2>and even on Mars... well atleast we found an alien there!</h2>
-            </div>
-          </div> <!--#fifth-->
-        
-          <div id="sixth" class="storyelement">
-            <div class="hsContent"
-                      data-center="opacity: 5"
-                      data-center-top="opacity: 0"
-                      data--100-bottom="opacity: 0;"
-                      data-anchor-target="#sixth"
-					  
-            >
-              <h2>But then it struck! It was in front of us all along.. </h2>
-            </div>
-          </div> <!--#sixth-->
-        
-          <div id="seventh" class="storyelement">
-            <div class="hsContent"
-                      data-center="opacity: 1"
-                      data-center-top="opacity: 0"
-                      data--100-bottom="opacity: 0;"
-                      data-anchor-target="#seventh"
-            >
-              <h2>It is where our lovely friends join us in celebrations!   </h2>
-            </div>
-          </div> <!--#seventh-->
-
+          <div id="fourth" class="storyelement"></div>
+          <div id="fifth" class="storyelement"></div>
+          <div id="sixth" class="storyelement"></div>
+          <div id="seventh" class="storyelement"></div>
+          <div id="eighth" class="storyelement"></div>
         </div> <!--.story-->
+		
+		
+		
     {% else %}
-      <p>Not found :( Sign in as a different user? <a href="{{ logout_url }}"> Logout </a> </p>
+  <body>
+	<div id="notfound">
+      <p> It looks like you don't have access to this page :( Sign in as a different user? <a href="{{ logout_url }}"> Logout </a> </p>
+       </div>
     {% endif %}
   </body>
 <html>
