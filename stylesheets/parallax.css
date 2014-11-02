@@ -102,7 +102,7 @@ box-shadow: inset 5px 5px #D3CBC3;
 #intro {
   position: fixed;
   top: 0px;
-  height: 2%;
+  height: 1%;
   padding: 2%;
   width: 100vw;
   background: #3385FF;
@@ -110,6 +110,7 @@ box-shadow: inset 5px 5px #D3CBC3;
   -moz-box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.5);
   box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.5);
   z-index: 500;
+  align:center;
   vertical-align: middle;
   font-size: x-large;
   color: white;
@@ -141,25 +142,25 @@ box-shadow: inset 5px 5px #D3CBC3;
 
 #defaultdress{
 	background: url(/images/us.png) 50% 0 no-repeat fixed;
-	background-size: 80%;
+	background-size: 100%;
 	background-position: center bottom;
 	z-index: 200;
 }
 #invitationtext0{
-	background: url(/images/IntroSentence0.png) 50% 0 no-repeat fixed;
-	background-size: 80%;
+	background: url(/images/introSentence0.png) 50% 0 no-repeat fixed;
+	background-size: 100%;
 	background-position: center bottom;
 	z-index: 300;
 }
 #invitationtext1{
-	background: url(/images/IntroSentence1.png) 50% 0 no-repeat fixed;
-	background-size: 80%;
+	background: url(/images/introSentence1.png) 50% 0 no-repeat fixed;
+	background-size: 100%;
 	background-position: center bottom;
 	z-index: 300;
 }
 #invitationtext2{
-	background: url(/images/IntroSentence2.png) 50% 0 no-repeat fixed;
-	background-size: 80%;
+	background: url(/images/introSentence2.png) 50% 0 no-repeat fixed;
+	background-size: 100%;
 	background-position: center bottom;
 	z-index: 300;
 }
@@ -172,61 +173,61 @@ box-shadow: inset 5px 5px #D3CBC3;
 }
 #beachdress{
 	background: url(/images/beachdress.png) 50% 0 no-repeat fixed;
-	background-size: 80%;
+	background-size: 100%;
 	background-position: center bottom;
 	z-index: 300;
 }
 
 #winterdress{
 	background: url(/images/winterdress.png) 50% 0 no-repeat fixed;
-	background-size: 80%;
+	background-size: 100%;
 	background-position: center bottom;
 	z-index: 300;
 }
 
 #mountaindress{
 	background: url(/images/mountaindress.png) 50% 0 no-repeat fixed;
-	background-size: 80%;
+	background-size: 100%;
 	background-position: center bottom;
 	z-index: 300;
 }
 
 #astrodress{
 	background: url(/images/astrodress.png) 50% 0 no-repeat fixed;
-	background-size: 80%;
+	background-size: 100%;
 	background-position: center bottom;
 	z-index: 300;
 }
 
 #weddingdress{
 	background: url(/images/weddingdress.png) 50% 0 no-repeat fixed;
-	background-size: 80%;
+	background-size: 100%;
 	background-position: center bottom;
 	z-index: 300;
 }
 
 #weddingdresstext{
 	background: url(/images/WeddingSentence.png) 50% 0 no-repeat fixed;
-	background-size: 80%;
+	background-size: 100%;
 	background-position: center bottom;
 	z-index: 300;
 }
 
 #weddingfamilydress{
 	background: url(/images/weddingfamilydress.png) 50% 0 no-repeat fixed;
-	background-size: 80%;
+	background-size: 100%;
 	background-position: center bottom;
 	z-index: 300;
 }
 #weddingfamilydresstext{
 	background: url(/images/WeddingSentence2.png) 50% 0 no-repeat fixed;
-	background-size: 80%;
+	background-size: 100%;
 	background-position: center bottom;
 	z-index: 300;
 }
 #finalinvite {
 	background: url(/images/endstory.png) 50% 0 no-repeat fixed;
-	background-size: 80%;
+	background-size: 100%;
 	background-position: center bottom;
 	z-index: 300;
 }
@@ -237,7 +238,7 @@ box-shadow: inset 5px 5px #D3CBC3;
 	width: 100vw;
 }
 #zeroth{
-	background: url(/images/invitebg.jpg) 50% 0 no-repeat fixed;
+	background: url(/images/invitebg2.jpg) 50% 0 no-repeat fixed;
 	background-size: 100% 100%;
 }
 #first{
