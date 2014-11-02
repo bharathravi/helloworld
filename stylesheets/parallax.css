@@ -180,7 +180,13 @@ html, body{
 	background-position: center bottom;
 	z-index: 300;
 }
+#finalinvite {
 
+	background: url(/images/weddingfamilydress.png) 50% 0 no-repeat fixed;
+	background-size: 100%;
+	background-position: center bottom;
+	z-index: 300;
+}
 .storyelement {
 	color: white;
 	height: 100vh;
@@ -192,7 +198,10 @@ html, body{
 	background: url(/images/beachbg.jpg) 50% 0 no-repeat fixed;
 	background-size: 100% 100%;
 }
-
+#firstandahalf{
+	background: url(/images/beachbg.jpg) 50% 0 no-repeat fixed;
+	background-size: 100% 100%;
+}
 
 #second{
 	background: url(/images/beachbg.jpg) 50% 0 no-repeat fixed;
@@ -223,6 +232,13 @@ html, body{
 	background: url(/images/weddingbg.jpg) 50% 0 no-repeat fixed;
 	background-size: 100% 100%;
 }
+
+#eighth{
+	background: url(/images/weddingbg.jpg) 50% 0 no-repeat fixed;
+	background-size: 100% 100%;
+
+}
+
 .hsContent {
     margin-left: -450px;
     top: auto;
