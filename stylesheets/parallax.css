@@ -198,6 +198,13 @@ background: url(/images/scroll.png) 50% 0 no-repeat fixed;
 	z-index: 300;
 }
 
+#weddingdresstext{
+	background: url(/images/WeddingSentence.png) 50% 0 no-repeat fixed;
+	background-size: 100%;
+  background-position: center bottom;
+	z-index: 300;
+}
+
 #weddingfamilydress{
 	background: url(/images/weddingfamilydress.png) 50% 0 no-repeat fixed;
 	background-size: 100%;
@@ -206,7 +213,7 @@ background: url(/images/scroll.png) 50% 0 no-repeat fixed;
 }
 #finalinvite {
 
-	background: url(/images/weddingfamilydress.png) 50% 0 no-repeat fixed;
+	background: url(/images/endstory.png) 50% 0 no-repeat fixed;
 	background-size: 100%;
 	background-position: center bottom;
 	z-index: 300;
