@@ -138,8 +138,20 @@ html, body{
         background-position: center bottom;
 	z-index: 200;
 }
-#invitationzerotext{
+#invitationtext0{
 background: url(/images/introSentence0.png) 50% 0 no-repeat fixed;
+	background-size: 100%;
+        background-position: center bottom;
+	z-index: 300;
+}
+#invitationtext1{
+background: url(/images/introSentence1.png) 50% 0 no-repeat fixed;
+	background-size: 100%;
+        background-position: center bottom;
+	z-index: 300;
+}
+#invitationtext2{
+background: url(/images/introSentence2.png) 50% 0 no-repeat fixed;
 	background-size: 100%;
         background-position: center bottom;
 	z-index: 300;
@@ -246,6 +258,7 @@ background: url(/images/scroll.png) 50% 0 no-repeat fixed;
 #seventh{
 	background: url(/images/weddingbg.jpg) 50% 0 no-repeat fixed;
 	background-size: 100% 100%;
+	
 }
 
 #eighth{
