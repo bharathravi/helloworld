@@ -11,7 +11,7 @@
 
     <h1> Invitees: </h1>
     {% for invitee in invitees %}
-       {{ invitee.first_name }} {{invitee.last_name }} {{ invitee.email }}<br>
+       {{ invitee.first_name }} {{invitee.last_name }} {{ invitee.email }} {{ invitee.uuid }}<br>
     {% endfor %}
 
   </body>

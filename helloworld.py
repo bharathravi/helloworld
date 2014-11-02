@@ -8,6 +8,7 @@ import cgi
 import jinja2
 import json
 import webapp2
+import uuid
 
 MAIN_PAGE_HTML = """\
 <html>
@@ -36,6 +37,7 @@ class Invitee(ndb.Model):
   last_name = ndb.StringProperty(indexed=True)
   email = ndb.StringProperty(indexed=True)
   rsvp = ndb.StringProperty(indexed=True)
+  uuid = ndb.StringProperty(indexed=True)
 
 class LoginPage(webapp2.RequestHandler):
   def GetUserOrRedirect(self, uri):
@@ -45,22 +47,44 @@ class LoginPage(webapp2.RequestHandler):
     else:
       self.redirect(users.create_login_url(uri))
 
-class MainPage(LoginPage):
+class MainPage(webapp2.RequestHandler):
   def get(self):
-    user = self.GetUserOrRedirect(self.request.uri)
-    if user:
-      query = Invitee.query(Invitee.email == user.email())
-      invitees = query.fetch()
+    uuid = self.request.get("uuid")
+    template_values = {
+          'guest' : None,
+    }
 
-      template_values = {
-            'guest' : None,
-            'logout_url' : users.create_logout_url(self.request.uri)
-      }
+    if uuid:
+      query = Invitee.query(Invitee.uuid == uuid)
+      invitees = query.fetch()
       if len(invitees) == 1:
         template_values['guest'] = invitees[0]
 
-      template = JINJA_ENVIRONMENT.get_template('index.html')
-      self.response.write(template.render(template_values))
+    template = JINJA_ENVIRONMENT.get_template('index.html')
+    self.response.write(template.render(template_values))
+
+
+class RSVP(LoginPage):
+  def post(self):
+    uuid = self.request.get("uuid")
+    rsvp = self.request.get("rsvp")
+
+    query = Invitee.query(Invitee.uuid == uuid)
+    invitees = query.fetch()
+
+    array = {"retval": "1"}
+    if len(invitees) != 1:
+      array["retval"] = "0"
+    else:
+      invitees[0].rsvp = rsvp
+      invitees[0].put()
+
+    print rsvp, array["retval"]
+    print json.dumps(array)
+
+    self.response.headers['Content-Type'] = 'application/json'
+    self.response.out.write(json.dumps(array))
+
 
 class GuestManager(LoginPage):
   def get(self):
@@ -84,11 +108,13 @@ class GuestManager(LoginPage):
     first = self.request.get("first")
     last = self.request.get("last")
     email = self.request.get("email")
-
+    uuid = uuid.uuid4()
+    
     invitee = Invitee(first_name=first,
                       last_name=last,
                       email=email,
-                      rsvp="0")
+                      rsvp="0",
+                      uuid=uuid)
     query = Invitee.query(Invitee.email == invitee.email)
     invitees = query.fetch()
 
@@ -97,27 +123,6 @@ class GuestManager(LoginPage):
     else:
       invitee.put()
     self.redirect('/admin')
-
-class RSVP(LoginPage):
-  def post(self):
-    user = self.GetUserOrRedirect(self.request.uri)
-    rsvp = self.request.get("rsvp")
-
-    query = Invitee.query(Invitee.email == user.email())
-    invitees = query.fetch()
-
-    array = {"retval": "1"}
-    if len(invitees) != 1:
-      array["retval"] = "0"
-    else:
-      invitees[0].rsvp = rsvp
-      invitees[0].put()
-
-    print rsvp, array["retval"]
-    print json.dumps(array)
-
-    self.response.headers['Content-Type'] = 'application/json'
-    self.response.out.write(json.dumps(array))
 
 
 application = webapp2.WSGIApplication([
