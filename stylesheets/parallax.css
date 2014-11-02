@@ -38,11 +38,11 @@ html, body{
 }
 
 #responseOuter {
-  position: fixed;
-  height: 10%;
+  position: relative;
+  height: 50%;
   margin: 0 auto;
   padding: 0;
-  width: 70%;
+  width: 40%;
   overflow: hidden;
   padding: 1%;
   top: 25%;
@@ -134,42 +134,49 @@ html, body{
 
 #defaultdress{
 	background: url(/images/us.png) 50% 0 no-repeat fixed;
+	background-size: 100%;
         background-position: center bottom;
 	z-index: 200;
 }
 
 #beachdress{
 	background: url(/images/beachdress.png) 50% 0 no-repeat fixed;
+	background-size: 100%;
         background-position: center bottom;
 	z-index: 300;
 }
 
 #winterdress{
 	background: url(/images/winterdress.png) 50% 0 no-repeat fixed;
+	background-size: 100%;
   background-position: center bottom;
 	z-index: 300;
 }
 
 #mountaindress{
 	background: url(/images/mountaindress.png) 50% 0 no-repeat fixed;
+	background-size: 100%;
   background-position: center bottom;
 	z-index: 300;
 }
 
 #astrodress{
 	background: url(/images/astrodress.png) 50% 0 no-repeat fixed;
+	background-size: 100%;
   background-position: center bottom;
 	z-index: 300;
 }
 
 #weddingdress{
 	background: url(/images/weddingdress.png) 50% 0 no-repeat fixed;
+	background-size: 100%;
   background-position: center bottom;
 	z-index: 300;
 }
 
 #weddingfamilydress{
 	background: url(/images/weddingfamilydress.png) 50% 0 no-repeat fixed;
+	background-size: 100%;
 	background-position: center bottom;
 	z-index: 300;
 }

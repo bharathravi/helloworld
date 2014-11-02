@@ -43,12 +43,12 @@
     }
   
     var inProgress = false;
-    function SetResponse(response) {
+    function SetResponse(uuid, response) {
       if (inProgress)
         return;
 
       inProgress = true;
-      var dataString = "rsvp=" + response;
+      var dataString = "rsvp=" + response + "&uuid=" + uuid;
       var divName = '#' + ResponseToDiv(response);
       old = $(divName).text();
       $(divName).text("Saving...");
@@ -110,16 +110,17 @@
 
 
       console.log("READY");
+      var uuid = {{  guest.uuid }}
       $("#divYes").click(function(){
-        SetResponse(1);
+        SetResponse(uuid, 1);
       });
   
       $("#divMaybe").click(function(){
-        SetResponse(0);
+        SetResponse(uuid, 0);
       });
   
       $("#divNo").click(function(){
-        SetResponse(-1);
+        SetResponse(uuid, -1);
       });
   
       DrawResponse(parseInt({{ guest.rsvp }}));
@@ -162,18 +163,26 @@
 	   <img src="/images/astrodress.png" width="1" height="1" alt="" />
 	   <img src="/images/weddingdress.png" width="1" height="1" alt="" />
 	   <img src="/images/weddingfamilydress.png" width="1" height="1" alt="" />
+	   <img src="/images/IntroSentence1.png" width="1" height="1" alt="" />
+	   <img src="/images/IntroSentence2.png" width="1" height="1" alt="" />
+	   <img src="/images/weddingfamilydress.png" width="1" height="1" alt="" />
 	</div>
            
        <div id="intro">
          Hi {{ guest.first_name }} {{guest.last_name }}! 
-         <div style="float:right">
-         Not {{ guest.first_name }}?
-         <a href="{{ logout_url }}"> Sign Out here</a>.
-         </div>
        </div>
 
         <div id="story" class="loadingStory">
           <div id="defaultdress" class="static">
+
+            <div id="responseOuter" class="static"
+                data-center="opacity: 3"
+                data-center-top="opacity: 0;"
+                data-anchor-target="#seventh">
+                <div id="divYes" class="response"> Yes </div>
+                <div id="divMaybe" class="response"> Maybe </div>
+                <div id="divNo" class="response"> No </div>
+            </div><!-- responseOuter -->
 
             <div id ="beachdress" class="static" 
                 data-center="opacity: 10"
@@ -215,14 +224,6 @@
                 data-anchor-target="#seventh">
             </div><!-- weddingfamilydress -->
 
-            <div id="responseOuter" class="static"
-                data-center="opacity: 3"
-                data-center-top="opacity: 0;"
-                data-anchor-target="#seventh">
-                <div id="divYes" class="response"> Yes </div>
-                <div id="divMaybe" class="response"> Maybe </div>
-                <div id="divNo" class="response"> No </div>
-            </div><!-- responseOuter -->
           </div><!-- static -->
 
           <div id="first" class="storyelement">
