@@ -146,19 +146,19 @@ box-shadow: inset 5px 5px #D3CBC3;
 	z-index: 200;
 }
 #invitationtext0{
-	background: url(/images/introSentence0.png) 50% 0 no-repeat fixed;
+	background: url(/images/IntroSentence0.png) 50% 0 no-repeat fixed;
 	background-size: 80%;
 	background-position: center bottom;
 	z-index: 300;
 }
 #invitationtext1{
-	background: url(/images/introSentence1.png) 50% 0 no-repeat fixed;
+	background: url(/images/IntroSentence1.png) 50% 0 no-repeat fixed;
 	background-size: 80%;
 	background-position: center bottom;
 	z-index: 300;
 }
 #invitationtext2{
-	background: url(/images/introSentence2.png) 50% 0 no-repeat fixed;
+	background: url(/images/IntroSentence2.png) 50% 0 no-repeat fixed;
 	background-size: 80%;
 	background-position: center bottom;
 	z-index: 300;
