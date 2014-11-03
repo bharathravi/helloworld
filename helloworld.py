@@ -170,8 +170,20 @@ class GuestManager(AdminPage):
 
 class Emailer(AdminPage):
   def DoGet(self):
-    query = Invitee.query()
-    invitees = query.fetch()
+    template_values = {}
+    template = JINJA_ENVIRONMENT.get_template('email.html')
+    self.response.write(template.render(template_values))
+
+  def DoPost(self):
+    email_to_fetch = self.request.get("email")
+
+    invitees = None
+    if email_to_fetch == "all":
+      query = Invitee.query()
+      invitees = query.fetch()
+    else:
+      query = Invitee.query(Invitee.email == invitee.email)
+      invitees = query.fetch()
  
     for invitee in invitees:
       if not mail.is_email_valid(invitee.email):
