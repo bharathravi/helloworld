@@ -79,9 +79,9 @@ box-shadow: inset 5px 5px #D3CBC3;
 }
 
 #weddingimage {
-height:50vh;
+height:40vh;
 
-  background: url('/images/us.png') 50% 0 no-repeat fixed;
+  background: url('/images/mob-us.png') 50% 0 no-repeat ;
 background-size:100%  ;
 	background-position: center center;
 }

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% autoescape true %}
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
     <link type="text/css" rel="stylesheet" href="/stylesheets/mob.css" />
@@ -16,10 +17,14 @@
     }
 
     function DrawResponse(response) {
+	  console.log("RESP " + response);
       var divName = ResponseToDiv(response);
   
+      console.log(divName);
       $(".response").each(function( i ) {
+	  console.log("BLAH");
         id = $(this).attr('id');
+		console.log(id);
         if (id == divName) {
           $(this).addClass("selected");
         } else {
@@ -30,6 +35,7 @@
   
     var inProgress = false;
     function SetResponse(uuid, response) {
+	  console.log("Click");
       if (inProgress)
         return;
 
@@ -52,6 +58,21 @@
         }
       });
     }
+	 console.log("READY");
+      var uuid = '{{  guest.uuid }}';
+      $("#divYes").click(function(){
+        SetResponse(uuid, 1);
+      });
+  
+      $("#divMaybe").click(function(){
+        SetResponse(uuid, 0);
+      });
+  
+      $("#divNo").click(function(){
+        SetResponse(uuid, -1);
+      });
+  
+      DrawResponse(parseInt({{ guest.rsvp }}));
 	</script>
 </head>
 <body>
@@ -73,3 +94,4 @@
          ></div>
 		 			-->
 </body>
+{% endautoescape %}
