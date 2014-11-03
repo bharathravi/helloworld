@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 {% autoescape true %}
 <html class="no-js">
+{% if guest %}
   <head>
     <meta name=viewport content='width=700'>
     <link type="text/css" rel="stylesheet" href="/stylesheets/parallax.css" />
     <link type="text/css" rel="stylesheet" href="/stylesheets/snowflakes.css" />
     <link rel="stylesheet" href="//code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
 
-{% if guest %}
     <!-- Grab the JQuery API from the Google servers -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 
@@ -303,8 +303,9 @@
 		
     {% else %}
   <body>
-	<div id="notfound">
-      <p> It looks like you don't have access to this page :( Sign in as a different user? <a href="{{ logout_url }}"> Logout </a> </p>
+	<div id="notfound" style="color: white; font-size: x-large; position:fixed; top=50%">
+      <p align="center"> Sorry, It looks like you don't have access to this page :(
+          Do you have the right URL? </p>
        </div>
     {% endif %}
   </body>

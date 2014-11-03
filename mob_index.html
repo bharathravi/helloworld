@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% autoescape true %}
+{% if guest %}
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link type="text/css" rel="stylesheet" href="/stylesheets/mob.css" />
@@ -96,4 +97,13 @@ DrawResponse(parseInt({{ guest.rsvp }}));
 
 </script>
 </body>
+{% else %}
+  <body style="background-color: #000000">
+    <div id="notfound" style="color: white; font-size: x-large; position:fixed; top=50%">
+      <p align="center"> Sorry, It looks like you don't have access to this page :(
+                         Do you have the right URL? </p>
+    </div>
+  </body>
+{% endif %}
+
 {% endautoescape %}
