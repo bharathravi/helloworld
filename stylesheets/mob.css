@@ -1,10 +1,11 @@
-
+.mobile {
+ width: 100vw;
+ text-align: center;
+}
 
 #finalinvite {
-	background: url(/images/endstory.png) 50% 0 no-repeat fixed;
-	background-size: 100%;
-	background-position: center bottom;
-	z-index: 300;
+	
+	
 }
 
 .static {
@@ -19,45 +20,44 @@
   }
   
   body{
-  background: url(/images/invitebg.jpg) 50% 0 no-repeat fixed;
-	background-size: 100%;
+  
   }
   
   
 #responseOuter {
   
 position: relative;
-height: 29%;
+height: 30vh;
 margin: 0 auto;
 padding: 0;
-width: 30%;
+width: 100%;
 overflow: hidden;
 padding: 1%;
 top: 48%;
-left: 40%;
+
 z-index: 700;
 }
 
 
 .response {
 
-width: 30%;
-height: 18%;
+width: 50%;
+height: 60%;
 margin-top: 3%;
 padding-top: 0;
 margin-right: 1%;
 margin-left: 1%;
-font-size: xx-large;
+font-size: large;
 color: #EDE2DE;
 text-align: center;
-text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+
 background: #E54E17;
 /* outline: black; */
 border: 2px solid #131313;
 /* outline-width: thick; */
-border-radius: 20px;
+border-radius: 40px;
 /* border-color: black; */
-border-width: thick;
+border-width: medium;
 cursor: pointer;
 /* -webkit-box-shadow: inset 0 -2px #2a8bcc; */
 /* box-shadow: inset -5px -5px #89827A; */
@@ -76,4 +76,12 @@ font-weight: bold;
 background: antiquewhite;
 color: black;
 box-shadow: inset 5px 5px #D3CBC3;
+}
+
+#weddingimage {
+height:50vh;
+
+  background: url('/images/us.png') 50% 0 no-repeat fixed;
+background-size:100%  ;
+	background-position: center center;
 }
