@@ -63,6 +63,11 @@ class MainPage(webapp2.RequestHandler):
           'guest' : None,
     }
 
+    uastring = self.request.headers.get('user_agent')
+    if "Mobile" in uastring:
+      self.response.write("Visiting from a mobile")
+      return
+
     if myuuid:
       query = Invitee.query(Invitee.uuid == myuuid)
       invitees = query.fetch()
