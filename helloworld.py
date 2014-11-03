@@ -182,7 +182,7 @@ class Emailer(AdminPage):
       query = Invitee.query()
       invitees = query.fetch()
     else:
-      query = Invitee.query(Invitee.email == invitee.email)
+      query = Invitee.query(Invitee.email == email_to_fetch)
       invitees = query.fetch()
  
     for invitee in invitees:
