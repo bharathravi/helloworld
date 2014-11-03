@@ -76,14 +76,13 @@
         $body = $('body');
 
         //FadeIn all sections   
-        $body.imagesLoaded( function() {
-           setTimeout(function() {
+        imagesLoaded("#preload", function( instance ) {
+      	     console.log("ALL IMAGES LOADED");
              // Resize sections
              adjustWindow();
 
              // Fade in sections
              $body.removeClass('loading');
-           }, 800);
         });
 
 
@@ -170,7 +169,7 @@
 	   <img src="/images/IntroSentence0.png" width="1" height="1" alt="" />
 	   <img src="/images/IntroSentence1.png" width="1" height="1" alt="" />
 	   <img src="/images/IntroSentence2.png" width="1" height="1" alt="" />
-	   <img src="/images/WeddingSentence1.png" width="1" height="1" alt="" />
+	   <img src="/images/WeddingSentence.png" width="1" height="1" alt="" />
 	   <img src="/images/WeddingSentence2.png" width="1" height="1" alt="" />
 	   <img src="/images/RsvpText.png" width="1" height="1" alt="" />
 	   <img src="/images/endstory.png" width="1" height="1" alt="" />
