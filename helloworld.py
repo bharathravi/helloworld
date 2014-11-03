@@ -57,16 +57,19 @@ class Invitee(ndb.Model):
   uuid = ndb.StringProperty(indexed=True)
 
 class MainPage(webapp2.RequestHandler):
+  def GetRightTemplate(self, user_agent_string):
+    """Get the right template depending on the user agent"""
+    if 'Mobile' in user_agent_string:
+      return JINJA_ENVIRONMENT.get_template('mob_index.html')
+
+    return JINJA_ENVIRONMENT.get_template('index.html')
+      
+
   def get(self):
     myuuid = self.request.get("uuid")
     template_values = {
           'guest' : None,
     }
-
-    uastring = self.request.headers.get('user_agent')
-    if "Mobile" in uastring:
-      self.response.write("Visiting from a mobile")
-      return
 
     if myuuid:
       query = Invitee.query(Invitee.uuid == myuuid)
@@ -74,7 +77,7 @@ class MainPage(webapp2.RequestHandler):
       if len(invitees) == 1:
         template_values['guest'] = invitees[0]
 
-    template = JINJA_ENVIRONMENT.get_template('index.html')
+    template = GetRightTemplate(self.request.headers.get('user_agent'))
     self.response.write(template.render(template_values))
 
 
