@@ -77,7 +77,7 @@ class MainPage(webapp2.RequestHandler):
       if len(invitees) == 1:
         template_values['guest'] = invitees[0]
 
-    template = GetRightTemplate(self.request.headers.get('user_agent'))
+    template = self.GetRightTemplate(self.request.headers.get('user_agent'))
     self.response.write(template.render(template_values))
 
 
