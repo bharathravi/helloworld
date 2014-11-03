@@ -1,98 +1,99 @@
 <!DOCTYPE html>
 {% autoescape true %}
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link type="text/css" rel="stylesheet" href="/stylesheets/mob.css" />
-	 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-	 <script src="scripts/jquery.mobile-1.4.5.min.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript" charset="utf-8">
-
-    function ResponseToDiv(response) {
-      if (response == 1) { 
-        return "divYes";
-      } else if (response == 0) {
-        return "divMaybe";
-      } else if (response == -1) {
-        return "divNo";
-      }
-    }
-
-    function DrawResponse(response) {
-	  console.log("RESP " + response);
-      var divName = ResponseToDiv(response);
-  
-      console.log(divName);
-      $(".response").each(function( i ) {
-	  console.log("BLAH");
-        id = $(this).attr('id');
-		console.log(id);
-        if (id == divName) {
-          $(this).addClass("selected");
-        } else {
-          $(this).removeClass("selected");
-        }
-      }); 
-    }
-  
-    var inProgress = false;
-    function SetResponse(uuid, response) {
-	  console.log("Click");
-      if (inProgress)
-        return;
-
-      inProgress = true;
-      var dataString = "rsvp=" + response + "&uuid=" + uuid;
-      var divName = '#' + ResponseToDiv(response);
-      old = $(divName).text();
-      $(divName).text("Saving...");
- 
-      console.log(dataString);
-      $.ajax({
-        type: "POST",
-        data: dataString,
-        url: "/rsvp",
-        success: function(data) {
-          console.log("RET " + data.retval);
-          $(divName).text(old);
-          DrawResponse(response);
-          inProgress = false;
-        }
-      });
-    }
-	 console.log("READY");
-      var uuid = '{{  guest.uuid }}';
-      $("#divYes").tap(function(){
-        SetResponse(uuid, 1);
-      });
-  
-      $("#divMaybe").tap(function(){
-        SetResponse(uuid, 0);
-      });
-  
-      $("#divNo").tap(function(){
-        SetResponse(uuid, -1);
-      });
-  
-      DrawResponse(parseInt({{ guest.rsvp }}));
-	</script>
+    <link rel="stylesheet" href="//code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
 </head>
 <body>
-<div id="title" class="mobile"><h2> A Wedding Invitation from Ranjitha and Bharath </h2></div>
-<div id="invitetext" class="mobile"> Please grace us with your presence and blessings on Friday, the 28th of November, 2014 </div>
-<div id="weddingimage" class="mobile"></div>
-<div id="venue" class="mobile"><p> Venue: A very nice place</p></div>
-<div id="rsvp" class="mobile"><div id="responseOuter" class="static"
-                >
-				<img src="images/RsvpText.png" height="5%"  style="top:42%;" />
-                <div id="divYes" class="response"> Yes </div>
-                <div id="divMaybe" class="response"> Maybe </div>
-                <div id="divNo" class="response"> No </div>
-            </div>
+<div class="background">
+  <div id="title" class="mobile"><h2> A Wedding Invitation from Ranjitha and Bharath </h2></div>
+  <div id="invitetext" class="mobile">
+    <p>Please grace us with your presence and blessings
+        on Friday, the 28th of November, 2014
+    </p></div>
+  <div id="weddingimage" class="mobile"></div>
+  <div id="venue" class="mobile"><p> Venue: A very nice place</p></div>
+  <div id="rsvp" class="mobile">
+    <div id="responseOuter" class="static">
+      <img src="images/RsvpText.png" height="5%" width="30%"  style="top:42%;" />
+      <div id="divYes" class="response"> Yes </div>
+      <div id="divMaybe" class="response"> Maybe </div>
+      <div id="divNo" class="response"> No </div>
+    </div>
+  </div>
 </div>
 
-<!--
-<div id ="finalinvite" class="static" 
-         ></div>
-		 			-->
+<script type="text/javascript" charset="utf-8">
+function ResponseToDiv(response) {
+  if (response == 1) {
+    return "divYes";
+  } else if (response == 0) {
+    return "divMaybe";
+  } else if (response == -1) {
+    return "divNo";
+  }
+}
+
+function DrawResponse(response) {
+  var divName = ResponseToDiv(response);
+
+  $(".response").each(function( i ) {
+    id = $(this).attr('id');
+    if (id == divName) {
+      $(this).addClass("selected");
+    } else {
+      $(this).removeClass("selected");
+    }
+  });
+}
+
+var inProgress = false;
+function SetResponse(uuid, response) {
+  if (inProgress)
+    return;
+
+  inProgress = true;
+  var dataString = "rsvp=" + response + "&uuid=" + uuid;
+  var divName = '#' + ResponseToDiv(response);
+  old = $(divName).text();
+  $(divName).text("Saving...");
+
+  console.log(dataString);
+  $.ajax({
+    type: "POST",
+    data: dataString,
+    url: "/rsvp",
+    success: function(data) {
+      console.log("RET " + data.retval);
+      $(divName).text(old);
+      DrawResponse(response);
+      inProgress = false;
+    }
+  });
+}
+
+
+console.log("READY");
+var uuid = '{{  guest.uuid }}';
+$("#divYes").bind("tap", function( event ){
+  SetResponse(uuid, 1);
+});
+$("#divMaybe").bind("tap", function( event ){
+  SetResponse(uuid, 0);
+});
+$("#divNo").bind("tap", function( event ){
+  SetResponse(uuid, -1);
+});
+
+$(".response").each(function (i) {
+  console.log("EACH");
+});
+
+DrawResponse(parseInt({{ guest.rsvp }}));
+
+</script>
 </body>
 {% endautoescape %}

@@ -5,6 +5,7 @@
     <meta name=viewport content='width=700'>
     <link type="text/css" rel="stylesheet" href="/stylesheets/parallax.css" />
     <link type="text/css" rel="stylesheet" href="/stylesheets/snowflakes.css" />
+    <link rel="stylesheet" href="//code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
 
 {% if guest %}
     <!-- Grab the JQuery API from the Google servers -->
@@ -17,6 +18,7 @@
     <script type="text/javascript" src="scripts/imagesloaded.js"></script>
     <script type="text/javascript" src="scripts/skrollr.js"></script>
     <script type="text/javascript" src="scripts/snowflakes.js"></script>
+    <script src="//code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
     <script type="text/javascript" charset="utf-8">
 
     function ResponseToDiv(response) {
@@ -121,6 +123,16 @@
       $("#divNo").click(function(){
         SetResponse(uuid, -1);
       });
+      $("#divYes").bind("tap", function( event ){
+        SetResponse(uuid, 1);
+      });
+      $("#divMaybe").bind("tap", function( event ){
+        SetResponse(uuid, 0);
+      });
+      $("#divNo").bind("tap", function( event ){
+        SetResponse(uuid, -1);
+      });
+
   
       DrawResponse(parseInt({{ guest.rsvp }}));
 
@@ -264,7 +276,7 @@
                 data-center="opacity: 9"
                 data-center-top="opacity: 0;"
                 data-anchor-target="#eighth">
-				<img src="images/RsvpText.png" height="15%"  style="top:42%;" />
+				<img src="images/RsvpText.png" height="15%"  top:42%;" />
                 <div id="divYes" class="response"> Yes </div>
                 <div id="divMaybe" class="response"> Maybe </div>
                 <div id="divNo" class="response"> No </div>
