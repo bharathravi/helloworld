@@ -4,6 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
     <link type="text/css" rel="stylesheet" href="/stylesheets/mob.css" />
 	 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	 <script src="scripts/jquery.mobile-1.4.5.min.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" charset="utf-8">
 
     function ResponseToDiv(response) {
@@ -60,15 +61,15 @@
     }
 	 console.log("READY");
       var uuid = '{{  guest.uuid }}';
-      $("#divYes").click(function(){
+      $("#divYes").tap(function(){
         SetResponse(uuid, 1);
       });
   
-      $("#divMaybe").click(function(){
+      $("#divMaybe").tap(function(){
         SetResponse(uuid, 0);
       });
   
-      $("#divNo").click(function(){
+      $("#divNo").tap(function(){
         SetResponse(uuid, -1);
       });
   
