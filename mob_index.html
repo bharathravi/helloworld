@@ -1,23 +1,8 @@
 <!DOCTYPE html>
-{% autoescape true %}
-<html class="no-js">
-  <head>
-    <meta name=viewport content='width=700'>
-    <link type="text/css" rel="stylesheet" href="/stylesheets/parallax.css" />
-    <link type="text/css" rel="stylesheet" href="/stylesheets/snowflakes.css" />
+<head>
 
-{% if guest %}
-    <!-- Grab the JQuery API from the Google servers -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-
-    <!-- Scripts for parallax  -->
-    <script type="text/javascript" src="scripts/jquery.parallax-1.1.3.js"></script>
-    <script type="text/javascript" src="scripts/jquery.localscroll-1.2.7-min.js"></script>
-    <script type="text/javascript" src="scripts/jquery.scrollTo-1.4.2-min.js"></script>
-    <script type="text/javascript" src="scripts/imagesloaded.js"></script>
-    <script type="text/javascript" src="scripts/skrollr.js"></script>
-    <script type="text/javascript" src="scripts/snowflakes.js"></script>
-    <script type="text/javascript" charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="/stylesheets/mob.css" />
+<script type="text/javascript" charset="utf-8">
 
     function ResponseToDiv(response) {
       if (response == 1) { 
@@ -66,197 +51,10 @@
         }
       });
     }
-  
-    $(document).ready(function(){
-      // Preload everything
-       // Setup variables
-        $window = $(window);
-        $stat = $('.static');
-        $storyelement = $('.storyelement');
-        $body = $('body');
+</head>
+<body>
 
-        //FadeIn all sections   
-        $body.imagesLoaded( function() {
-           setTimeout(function() {
-             // Resize sections
-             adjustWindow();
-
-             // Fade in sections
-             $body.removeClass('loading');
-           }, 800);
-        });
-
-
-        function adjustWindow(){
-                // Init Skrollr
-                var s = skrollr.init();
-
-                // Get window size
-                winH = $window.height();
-
-               // Keep minimum height 550
-               if(winH <= 550) {
-                        winH = 550;
-                }
-
-                // Resize our slides
-               $("#story").removeClass("loadingStory");
-	       $("#story").addClass("loaded");
-
-              // Refresh Skrollr after resizing our sections
-              s.refresh($('#story'));
-        }
-
-
-
-      console.log("READY");
-      var uuid = '{{  guest.uuid }}';
-      $("#divYes").click(function(){
-        SetResponse(uuid, 1);
-      });
-  
-      $("#divMaybe").click(function(){
-        SetResponse(uuid, 0);
-      });
-  
-      $("#divNo").click(function(){
-        SetResponse(uuid, -1);
-      });
-  
-      DrawResponse(parseInt({{ guest.rsvp }}));
-
-      // Initiate parallaz stuff
-      $('#nav').localScroll(800);
-
- 
-
-      var snowflakes = new Snowflakes('third','snowflakesContainer');
-      snowflakes.create(200);
-  
-      //.parallax(xPosition, speedFactor, outerHeight) options:
-      //xPosition - Horizontal position of the element
-      //inertia - speed to move relative to vertical scroll. Example: 0.1 is one tenth the speed of scrolling,
-      //2 is twice the speed of scrolling
-      //outerHeight (true/false) - Whether or not jQuery should use it's outerHeight option to determine when a section is in the viewport
-  
-//      $('#first').parallax("50%", 0.2);
-//      $('#second').parallax("50%", 0.4);
-//      $('#third').parallax("50%", 0.3);
-//      $('#fourth').parallax("50%", 0.23);
-//      $('#fifth').parallax("50%", 0.24);
-//      $('#sixth').parallax("50%", 0.25);
-    });
-    </script>
-  </head>
-  
-  <body class="loading">
-	<div id="preload">
-	   <img src="/images/invitebg3.jpg" width="1" height="1" alt="" />
-	   <img src="/images/invitebg.jpg" width="1" height="1" alt="" />
-	   <img src="/images/pathbg.jpg" width="1" height="1" alt="" />
-	   <img src="/images/cloudbg.jpg" width="1" height="1" alt="" />
-	   <img src="/images/beachbg.jpg" width="1" height="1" alt="" />
-	   <img src="/images/snowbg.jpg" width="1" height="1" alt="" />
-	   <img src="/images/mountainbg.jpg" width="1" height="1" alt="" />
-	   <img src="/images/marsbg.jpg" width="1" height="1" alt="" />
-	   <img src="/images/weddingbg.jpg" width="1" height="1" alt="" />
-	   <img src="/images/us.png" width="1" height="1" alt="" />
-	   <img src="/images/beachdress.png" width="1" height="1" alt="" />
-	   <img src="/images/winterdress.png" width="1" height="1" alt="" />
-	   <img src="/images/mountaindress.png" width="1" height="1" alt="" />
-	   <img src="/images/astrodress.png" width="1" height="1" alt="" />
-	   <img src="/images/weddingdress.png" width="1" height="1" alt="" />
-	   <img src="/images/weddingfamilydress.png" width="1" height="1" alt="" />
-	   <img src="/images/IntroSentence0.png" width="1" height="1" alt="" />
-	   <img src="/images/IntroSentence1.png" width="1" height="1" alt="" />
-	   <img src="/images/IntroSentence2.png" width="1" height="1" alt="" />
-	   <img src="/images/WeddingSentence1.png" width="1" height="1" alt="" />
-	   <img src="/images/WeddingSentence2.png" width="1" height="1" alt="" />
-	   <img src="/images/RsvpText.png" width="1" height="1" alt="" />
-	   <img src="/images/endstory.png" width="1" height="1" alt="" />
-	</div>
-           
-       <div id="intro">
-         Hi {{ guest.first_name }} {{guest.last_name }}! 
-       </div>
-
-        <div id="story" class="loadingStory">
-          <div id="defaultdress" class="static">
-			<!--<div id="scrollimage" class="static" 
-                data-center="opacity: 10"
-                data-center-top="opacity: 0"
-                data--300-bottom="opacity: 0;"
-                data-anchor-target="#zeroth">
-				</div>-->
-			<div id="invitationtext0" class="static" 
-                data-center="opacity: 3"
-                data-center-top="opacity: 0"
-                data--300-bottom="opacity: 0;"
-                data-anchor-target="#zeroth">
-				</div>
-				<div id="invitationtext1" class="static" 
-                data-center="opacity: 3"
-                data-center-top="opacity: 0"
-                data--300-bottom="opacity: 0;"
-                data-anchor-target="#first">
-				</div>
-				<div id="invitationtext2" class="static" 
-                data-center="opacity: 3"
-                data-center-top="opacity: 0"
-                data--300-bottom="opacity: 0;"
-                data-anchor-target="#firstandahalf">
-				</div>
-            <div id ="beachdress" class="static" 
-                data-center="opacity: 4"
-                data-center-top="opacity: 0"
-                data--300-bottom="opacity: 0;"
-                data-anchor-target="#second">
-            </div><!-- beachdress -->
-
-            <div id ="winterdress" class="static" 
-                data-center="opacity: 4"
-                data-center-top="opacity: 0"
-                data--300-bottom="opacity: 0;"
-                data-anchor-target="#third">
-            </div><!-- winterdress -->
-
-            <div id ="mountaindress" class="static" 
-                data-center="opacity: 4"
-                data-center-top="opacity: 0"
-                data--300-bottom="opacity: 0;"
-                data-anchor-target="#fourth">
-            </div><!-- minedress -->
-
-            <div id ="astrodress" class="static" 
-                data-center="opacity: 4"
-                data-center-top="opacity: 0"
-                data--300-bottom="opacity: 0;"
-                data-anchor-target="#fifth">
-            </div><!-- astrodress -->
-
-            <div id ="weddingdress" class="static" 
-                data-center="opacity: 3"
-                data-center-top="opacity: 0;"
-                data-anchor-target="#sixth">
-            </div><!-- weddingdress -->
-			 <div id ="weddingdresstext" class="static" 
-                data-center="opacity: 4"
-                data-center-top="opacity: 0"
-                data--300-bottom="opacity: 0;"
-                data-anchor-target="#sixth">
-            </div><!-- weddingdress -->
-            <div id ="weddingfamilydress" class="static" 
-                data-center="opacity: 4"
-                data-center-top="opacity: 0;"
-                data-anchor-target="#seventh">
-            </div><!-- weddingfamilydress -->
-			<div id ="weddingfamilydresstext" class="static" 
-                data-center="opacity: 4"
-                data-center-top="opacity: 0"
-                data--300-bottom="opacity: 0;"
-                data-anchor-target="#seventh">
-            </div><!-- weddingfamilydress -->
-			<div id ="finalinvite" class="static" 
+<div id ="finalinvite" class="static" 
                 data-center="opacity: 6"
                 data-center-top="opacity: 0;"
                 data-anchor-target="#eighth">
@@ -269,33 +67,6 @@
                 <div id="divYes" class="response"> Yes </div>
                 <div id="divMaybe" class="response"> Maybe </div>
                 <div id="divNo" class="response"> No </div>
-            </div><!-- responseOuter -->
-         
-            </div><!-- finalinvite -->
-			
-          </div><!-- static -->
-		<div id="zeroth" class="storyelement"></div>
-		  <div id="first" class="storyelement"></div>
-          <div id="firstandahalf" class="storyelement"></div>
-          <div id="second" class="storyelement"></div>
-          <div id="third" class="storyelement">
-		  <div id="snowflakesContainer" ></div>            
-          </div> <!--#Third-->
-          <div id="fourth" class="storyelement"></div>
-          <div id="fifth" class="storyelement"></div>
-          <div id="sixth" class="storyelement"></div>
-          <div id="seventh" class="storyelement"></div>
-          <div id="eighth" class="storyelement"></div>
-        </div> <!--.story-->
-		
-		
-		
-    {% else %}
-  <body>
-	<div id="notfound">
-      <p> It looks like you don't have access to this page :( Sign in as a different user? <a href="{{ logout_url }}"> Logout </a> </p>
-       </div>
-    {% endif %}
-  </body>
-<html>
-{% endautoescape %}
+            </div>
+			</div>
+</body>
