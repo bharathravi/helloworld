@@ -25,12 +25,9 @@ MAIN_PAGE_HTML = """\
 </html>
 """
 CONTENT = """
-Dear %s %s,
+Dear %s,
 
 We're getting married! 
-
-Please grace our wedding with your presence, on 28th Nov 2014,
-at : <venue details>
 
 Please click on the link below to view your personalized invitation:
 http://bharathandranjitha.appspot.com?uuid=%s
@@ -46,7 +43,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
-ADMINS = ['bharathravi1@gmail.com', 'ranjithagk@gmail.com', 'test@example.com']
+ADMINS = ['bharathravi1@gmail.com', 'ranjithagk@gmail.com']
 
 class Invitee(ndb.Model):
   """A single invitee"""
@@ -55,6 +52,7 @@ class Invitee(ndb.Model):
   email = ndb.StringProperty(indexed=True)
   rsvp = ndb.StringProperty(indexed=True)
   uuid = ndb.StringProperty(indexed=True)
+  sender = ndb.StringProperty()
 
 class MainPage(webapp2.RequestHandler):
   def GetRightTemplate(self, user_agent_string):
@@ -151,19 +149,25 @@ class GuestManager(AdminPage):
     first = self.request.get("first")
     last = self.request.get("last")
     email = self.request.get("email")
+	mysender = self.request.get("sender")
     myuuid = str(uuid.uuid4())
       
+	if mysender not in ADMINS:
+	  self.response.write("Invalid sender");
+	  return
+	  
     print 'UUID', myuuid
     invitee = Invitee(first_name=first,
                       last_name=last,
                       email=email,
                       rsvp="0",
-                      uuid=myuuid)
+                      uuid=myuuid,
+                      sender=mysender)
     query = Invitee.query(Invitee.email == invitee.email)
     invitees = query.fetch()
   
     if len(invitees):
-      print 'EXISTS ALREADY'
+      self.response.write(invitee.email + ' exists already!')
     else:
       invitee.put()
     self.redirect('/admin')
@@ -190,7 +194,14 @@ class Emailer(AdminPage):
         self.response.write('Invalid email: ' + invitee.email)
         return
       else:
-        sender_address = ('Ranjitha Gurunath Kulkarni <ranjithagk@gmail.com>')
+	    if invitee.sender not in ADMINS:
+		  self.response.write('Invailid sender for ' + invitee.email)
+		  return
+		  
+		sender_address = 'Bharath Ravi <bharathravi1@gmail.com>'
+		if sender == 'ranjithagk@gmail.com':
+          sender_address = ('Ranjitha Gurunath Kulkarni <ranjithagk@gmail.com>')
+	  
         receiver_address = invitee.email
         subject = "Wedding invitation"
         content = CONTENT % (invitee.first_name, invitee.last_name, invitee.uuid) 

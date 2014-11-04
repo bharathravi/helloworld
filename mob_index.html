@@ -11,16 +11,28 @@
 </head>
 <body>
 <div class="background">
-  <div id="title" class="mobile"><h2> A Wedding Invitation from Ranjitha and Bharath </h2></div>
+  <div id="title" class="mobile" style="margin-top: 5%"><img src="images/MobInviteSentence.png" height="10%" width="80%" style="top:42%;" /></div>
   <div id="invitetext" class="mobile">
-    <p>Please grace us with your presence and blessings
-        on Friday, the 28th of November, 2014
+    <p><b><i>
+	<h2 style="margin:0">Dear {{ guest.first_name }},</h2><br/>
+	Please grace us with your presence and blessings<br/>
+	at our Wedding on Friday, the 28th of November, 2014</i></b>
     </p></div>
   <div id="weddingimage" class="mobile"></div>
-  <div id="venue" class="mobile"><p> Venue: A very nice place</p></div>
+  <div id="venue" class="mobile">
+  <p> <b><i><h2 style="margin:0">Venue:</h2></i><br/>
+  <i>
+  Raja Rajeshwari Kalyana Mantapa<br/>
+  No. 608/3, 2nd Block, Dr.Rajkumar Road,<br/>
+  Bangalore, India</i><br/>
+  <br/>
+  <i>Muhurtham: 10.51am & 12.30pm<br/>
+  Reception: 6.30pm onwards</b></i><br/>
+  </p></div>
   <div id="rsvp" class="mobile">
     <div id="responseOuter" class="static">
-      <img src="images/RsvpText.png" height="5%" width="30%"  style="top:42%;" />
+      <img src="images/RsvpText.png" height="5%" width="30%"  style="top:42%;" /><br/>
+	  <b><i>Will you be there?</i></b>
       <div id="divYes" class="response"> Yes </div>
       <div id="divMaybe" class="response"> Maybe </div>
       <div id="divNo" class="response"> No </div>
@@ -38,10 +50,8 @@ function ResponseToDiv(response) {
     return "divNo";
   }
 }
-
 function DrawResponse(response) {
   var divName = ResponseToDiv(response);
-
   $(".response").each(function( i ) {
     id = $(this).attr('id');
     if (id == divName) {
@@ -51,18 +61,15 @@ function DrawResponse(response) {
     }
   });
 }
-
 var inProgress = false;
 function SetResponse(uuid, response) {
   if (inProgress)
     return;
-
   inProgress = true;
   var dataString = "rsvp=" + response + "&uuid=" + uuid;
   var divName = '#' + ResponseToDiv(response);
   old = $(divName).text();
   $(divName).text("Saving...");
-
   $.ajax({
     type: "POST",
     data: dataString,
@@ -74,8 +81,6 @@ function SetResponse(uuid, response) {
     }
   });
 }
-
-
 var uuid = '{{  guest.uuid }}';
 $("#divYes").bind("tap", function( event ){
   SetResponse(uuid, 1);
@@ -86,9 +91,7 @@ $("#divMaybe").bind("tap", function( event ){
 $("#divNo").bind("tap", function( event ){
   SetResponse(uuid, -1);
 });
-
 DrawResponse(parseInt({{ guest.rsvp }}));
-
 </script>
 </body>
 {% else %}
