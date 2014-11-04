@@ -60,6 +60,9 @@
       });
     }
 	 console.log("READY");
+	 $(".response").each(function() {
+	    console.log("HA");
+	 });
       var uuid = '{{  guest.uuid }}';
       $("#divYes").tap(function(){
         SetResponse(uuid, 1);
