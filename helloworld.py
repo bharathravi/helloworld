@@ -174,7 +174,7 @@ class AddGuests(AdminPage):
       self.response.write(sender+ str(ADMINS) +'<br/>')
       self.response.write("Invalid sender:"  + sender + '<br/>')
       return
-	  
+  
     print 'UUID', myuuid
     invitee = Invitee(first_name=first,
                       last_name=last,
@@ -212,11 +212,11 @@ class Emailer(AdminPage):
         if invitee.sender not in ADMINS:
           self.response.write('Invailid sender for ' + invitee.email)
           return
-		  
+  
         sender_address = 'Bharath Ravi <bharathravi1@gmail.com>'
-	if sender == 'ranjithagk@gmail.com':
+        if invitee.sender == 'ranjithagk@gmail.com':
           sender_address = ('Ranjitha Gurunath Kulkarni <ranjithagk@gmail.com>')
-	  
+  
         receiver_address = invitee.email
         subject = "My Wedding invitation"
         content = CONTENT % (invitee.first_name, invitee.uuid) 

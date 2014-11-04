@@ -55,13 +55,11 @@
       old = $(divName).text();
       $(divName).text("Saving...");
  
-      console.log(dataString);
       $.ajax({
         type: "POST",
         data: dataString,
         url: "/rsvp",
         success: function(data) {
-          console.log("RET " + data.retval);
           $(divName).text(old);
           DrawResponse(response);
           inProgress = false;
