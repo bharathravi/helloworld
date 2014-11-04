@@ -10,13 +10,6 @@
       <div><input type="submit" value="Sign Guestbook"></div>
     </form>
 
-	<hr>
-	<form action="/email" method="post">
-	  <div> Enter an email ID or "all" </div><br/>
-      <div>Email: <input type="text" name="email"><br></div>
-      <div><input type="submit" value="Send"></div>
-    </form>
-	<hr>
     <h1> Invitees: </h1>
     {% for invitee in invitees %}
        {{ invitee.first_name }} {{invitee.last_name }} {{ invitee.email }} {{ invitee.uuid }}<br>
