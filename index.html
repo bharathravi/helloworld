@@ -101,7 +101,7 @@
                 }
 
                 // Resize our slides
-	       $("#intro").text(introtext);
+	       $("#intro").text(introtext + " please scroll to the bottom to RSVP.");
                $("#story").removeClass("loadingStory");
 	       $("#story").addClass("loaded");
 
@@ -172,7 +172,6 @@
 	<div id="preload">
 	   <img src="/images/ajax-loader.gif" width="1" height="1" alt="" />
 	   <img src="/images/archbg.jpg" width="1" height="1" alt="" />
-	   <img src="/images/invitebg3.jpg" width="1" height="1" alt="" />
 	   <img src="/images/invitebg.jpg" width="1" height="1" alt="" />
 	   <img src="/images/pathbg.jpg" width="1" height="1" alt="" />
 	   <img src="/images/cloudbg.jpg" width="1" height="1" alt="" />
@@ -297,8 +296,8 @@
          <div id="getdirections" class="static"
 		 data-center="opacity: 9"
                 data-center-top="opacity: 0;"
-                data-anchor-target="#eighth" style="left: 4%;top:95%;cursor:pointer;">
-				<img src="/images/MapLink.png" height="4%"/>
+                data-anchor-target="#eighth" style="left: 4%;top:92%;cursor:pointer;">
+				<img src="/images/MapLink.png" height="5%"/>
 			</div>
 		 
             </div><!-- finalinvite -->
@@ -321,7 +320,8 @@
     {% else %}
   <body style="background-color: #000000">
 	<div id="notfound" style="color: white; font-size: x-large; position:fixed; position:absolute; top:0; bottom:0; left:0; right:0; margin:auto">
-      <p align="center"> Sorry, It looks like you don't have access to this page :( Do you have the right URL? </p>
+      <p align="center"> Sorry, It looks like you don't have access to this page :(<br/>
+Do you have the right URL? </p>
        </div>
     {% endif %}
   </body>

@@ -218,7 +218,7 @@ class Emailer(AdminPage):
           sender_address = ('Ranjitha Gurunath Kulkarni <ranjithagk@gmail.com>')
   
         receiver_address = invitee.email
-        subject = "My Wedding invitation"
+        subject = "Our Wedding invitation"
         content = CONTENT % (invitee.first_name, invitee.uuid) 
         mail.send_mail(sender_address, receiver_address, subject, content)
         self.response.write("Success : " + invitee.email)
