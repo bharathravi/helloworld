@@ -2,7 +2,7 @@
 {% autoescape true %}
 <html>
   <body>
-    <form action="/admin" method="post">
+    <form action="/add" method="post">
       <div>First Name: <input type="text" name="first"><br></div>
       <div>Last Name: <input type="text" name="last"><br><div>
       <div>Email: <input type="text" name="email"><br></div>
@@ -11,7 +11,7 @@
     </form>
     <hr>
 Upload CSV<br/>
-<form action="/addcsv" method="post">
+<form action="/add" method="post">
   <input type="file" name="csv">
   <input type="submit" value="Upload">
 </form>
@@ -25,7 +25,7 @@ Upload CSV<br/>
 	<hr>
     <h1> Invitees: </h1>
     {% for invitee in invitees %}
-       {{ invitee.first_name }} {{invitee.last_name }} {{ invitee.email }} {{ invitee.uuid }}<br>
+       {{ invitee.first_name }} {{invitee.last_name }} {{ invitee.email }} {{ invitee.uuid }} {{ invitee.sender }}<br>
     {% endfor %}
 
   </body>
