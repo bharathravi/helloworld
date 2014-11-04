@@ -159,7 +159,7 @@ class GuestManager(AdminPage):
                       email=email,
                       rsvp="0",
                       uuid=myuuid)
-    query = Invitee.query(Invitee.uuid == invitee.uuid)
+    query = Invitee.query(Invitee.email == invitee.email)
     invitees = query.fetch()
   
     if len(invitees):
