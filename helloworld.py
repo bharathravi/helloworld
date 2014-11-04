@@ -59,7 +59,7 @@ class Invitee(ndb.Model):
 class MainPage(webapp2.RequestHandler):
   def GetRightTemplate(self, user_agent_string):
     """Get the right template depending on the user agent"""
-    if 'Mobile' in user_agent_string:
+    if 'Mobile' in user_agent_string or 'Nexus' in user_agent_string:
       return JINJA_ENVIRONMENT.get_template('mob_index.html')
 
     return JINJA_ENVIRONMENT.get_template('index.html')
