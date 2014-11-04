@@ -4,8 +4,10 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link type="text/css" rel="stylesheet" href="/stylesheets/mob.css" />
+    <link type="text/css" rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css"/>
     <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="//code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+
 </head>
 <body>
 <div class="background">
@@ -61,13 +63,11 @@ function SetResponse(uuid, response) {
   old = $(divName).text();
   $(divName).text("Saving...");
 
-  console.log(dataString);
   $.ajax({
     type: "POST",
     data: dataString,
     url: "/rsvp",
     success: function(data) {
-      console.log("RET " + data.retval);
       $(divName).text(old);
       DrawResponse(response);
       inProgress = false;
@@ -76,7 +76,6 @@ function SetResponse(uuid, response) {
 }
 
 
-console.log("READY");
 var uuid = '{{  guest.uuid }}';
 $("#divYes").bind("tap", function( event ){
   SetResponse(uuid, 1);
@@ -86,10 +85,6 @@ $("#divMaybe").bind("tap", function( event ){
 });
 $("#divNo").bind("tap", function( event ){
   SetResponse(uuid, -1);
-});
-
-$(".response").each(function (i) {
-  console.log("EACH");
 });
 
 DrawResponse(parseInt({{ guest.rsvp }}));
