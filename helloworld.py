@@ -150,15 +150,29 @@ class GuestManager(AdminPage):
     template = JINJA_ENVIRONMENT.get_template('add.html')
     self.response.write(template.render(template_values))
 
+class AddGuests(AdminPage):
   def DoPost(self):
-    first = self.request.get("first")
-    last = self.request.get("last")
-    email = self.request.get("email")
-    mysender = self.request.get("sender")
+    if self.request.get("csv"):
+      return self.CsvUpload()
+
+    return self.NewInvitee(self.request.get("first"),
+                      self.request.get("last"),
+                      self.request.get("email"),
+                      self.request.get("sender"))
+
+  def CsvUpload(self):
+    csv_file = self.request.get("csv")
+    for line in open(csv_file):
+      words = line.split(',')
+      words = [x.strip() for x in words]
+      self.NewInvitee(words[0], words[1], words[2], words[3])
+
+  def NewInvitee(self, first, last, email, sender):
     myuuid = str(uuid.uuid4())
       
-    if mysender not in ADMINS:
-      self.response.write("Invalid sender")
+    if sender not in ADMINS:
+      self.response.write(sender+ str(ADMINS) +'<br/>')
+      self.response.write("Invalid sender:"  + sender + '<br/>')
       return
 	  
     print 'UUID', myuuid
@@ -167,7 +181,7 @@ class GuestManager(AdminPage):
                       email=email,
                       rsvp="0",
                       uuid=myuuid,
-                      sender=mysender)
+                      sender=sender)
     query = Invitee.query(Invitee.email == invitee.email)
     invitees = query.fetch()
   
@@ -176,10 +190,7 @@ class GuestManager(AdminPage):
     else:
       invitee.put()
     self.redirect('/admin')
-
-class CsvUpload(AdminPage):
-  def DoPost(self):
-    return
+      
 
 class Emailer(AdminPage):
   def DoPost(self):
@@ -217,5 +228,5 @@ application = webapp2.WSGIApplication([
     ('/admin', GuestManager),
     ('/rsvp', RSVP),
     ('/email', Emailer),
-    ('/addcsv', CsvUpload),
+    ('/add', AddGuests),
 ], debug=True)
