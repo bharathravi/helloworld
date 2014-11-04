@@ -27,14 +27,19 @@ MAIN_PAGE_HTML = """\
 CONTENT = """
 Dear %s,
 
-We're getting married! 
+We are delighted to let you know that we are getting married
+on Friday, the 28th of November, 2014!
 
-Please click on the link below to view your personalized invitation:
+It would compound our joy if you could attend the wedding in person.
+
+Here's the invitation, containing more details:
 http://bharathandranjitha.appspot.com?uuid=%s
+(best viewed from a PC browser :) )
 
-Hope to see you there!
+We hope to see you there!
 
-Thanks,
+Yours,
+--
 Bharath and Ranjitha
 """
 
@@ -149,12 +154,12 @@ class GuestManager(AdminPage):
     first = self.request.get("first")
     last = self.request.get("last")
     email = self.request.get("email")
-	mysender = self.request.get("sender")
+    mysender = self.request.get("sender")
     myuuid = str(uuid.uuid4())
       
-	if mysender not in ADMINS:
-	  self.response.write("Invalid sender");
-	  return
+    if mysender not in ADMINS:
+      self.response.write("Invalid sender")
+      return
 	  
     print 'UUID', myuuid
     invitee = Invitee(first_name=first,
@@ -172,12 +177,11 @@ class GuestManager(AdminPage):
       invitee.put()
     self.redirect('/admin')
 
-class Emailer(AdminPage):
-  def DoGet(self):
-    template_values = {}
-    template = JINJA_ENVIRONMENT.get_template('email.html')
-    self.response.write(template.render(template_values))
+class CsvUpload(AdminPage):
+  def DoPost(self):
+    return
 
+class Emailer(AdminPage):
   def DoPost(self):
     email_to_fetch = self.request.get("email")
 
@@ -194,17 +198,17 @@ class Emailer(AdminPage):
         self.response.write('Invalid email: ' + invitee.email)
         return
       else:
-	    if invitee.sender not in ADMINS:
-		  self.response.write('Invailid sender for ' + invitee.email)
-		  return
+        if invitee.sender not in ADMINS:
+          self.response.write('Invailid sender for ' + invitee.email)
+          return
 		  
-		sender_address = 'Bharath Ravi <bharathravi1@gmail.com>'
-		if sender == 'ranjithagk@gmail.com':
+        sender_address = 'Bharath Ravi <bharathravi1@gmail.com>'
+	if sender == 'ranjithagk@gmail.com':
           sender_address = ('Ranjitha Gurunath Kulkarni <ranjithagk@gmail.com>')
 	  
         receiver_address = invitee.email
-        subject = "Wedding invitation"
-        content = CONTENT % (invitee.first_name, invitee.last_name, invitee.uuid) 
+        subject = "My Wedding invitation"
+        content = CONTENT % (invitee.first_name, invitee.uuid) 
         mail.send_mail(sender_address, receiver_address, subject, content)
         self.response.write("Success : " + invitee.email)
     
@@ -213,4 +217,5 @@ application = webapp2.WSGIApplication([
     ('/admin', GuestManager),
     ('/rsvp', RSVP),
     ('/email', Emailer),
+    ('/addcsv', CsvUpload),
 ], debug=True)

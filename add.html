@@ -9,6 +9,12 @@
 	  <div>Sender: <input type="text" name="sender"><br></div>
       <div><input type="submit" value="Sign Guestbook"></div>
     </form>
+    <hr>
+Upload CSV<br/>
+<form action="/addcsv" method="post">
+  <input type="file" name="csv">
+  <input type="submit" value="Upload">
+</form>
 
 	<hr>
 	<form action="/email" method="post">
