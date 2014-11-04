@@ -76,6 +76,9 @@
         $stat = $('.static');
         $storyelement = $('.storyelement');
         $body = $('body');
+	introtext = $("#intro").text();
+	$("#intro").text(introtext + " Hang on just a moment while we load everything...");
+	$body.addClass('loading');
 
         //FadeIn all sections   
         imagesLoaded("#preload", function( instance ) {
@@ -101,6 +104,7 @@
                 }
 
                 // Resize our slides
+	       $("#intro").text(introtext);
                $("#story").removeClass("loadingStory");
 	       $("#story").addClass("loaded");
 
@@ -162,6 +166,7 @@
   
   <body class="loading">
 	<div id="preload">
+	   <img src="/images/ajax-loader.gif" width="1" height="1" alt="" />
 	   <img src="/images/invitebg3.jpg" width="1" height="1" alt="" />
 	   <img src="/images/invitebg.jpg" width="1" height="1" alt="" />
 	   <img src="/images/pathbg.jpg" width="1" height="1" alt="" />
@@ -191,6 +196,7 @@
          Hi {{ guest.first_name }} {{guest.last_name }}! 
        </div>
 
+	<div id="wrapper" class="loading">
         <div id="story" class="loadingStory">
           <div id="defaultdress" class="static">
 			<!--<div id="scrollimage" class="static" 
@@ -298,12 +304,10 @@
           <div id="seventh" class="storyelement"></div>
           <div id="eighth" class="storyelement"></div>
         </div> <!--.story-->
-		
-		
-		
+       </div>
     {% else %}
-  <body>
-	<div id="notfound" style="color: white; font-size: x-large; position:fixed; top=50%">
+  <body style="background-color: #000000">
+	<div id="notfound" style="color: white; font-size: x-large; position:fixed; position:absolute; top:0; bottom:0; left:0; right:0; margin:auto">
       <p align="center"> Sorry, It looks like you don't have access to this page :(
           Do you have the right URL? </p>
        </div>

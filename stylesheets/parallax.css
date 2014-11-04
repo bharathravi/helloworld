@@ -22,7 +22,8 @@ html, body{
 }
 
 .loading {
-        background: url('/images/ajax-loader.gif') no-repeat center center;
+        background: url('/images/ajax-loader.gif') no-repeat 50% 2%;
+        background-color: #000000;
 }
 
 .loadingStory {
