@@ -4,9 +4,10 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link type="text/css" rel="stylesheet" href="/stylesheets/mob.css" />
-    <link rel="stylesheet" href="//code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
+    <link type="text/css" rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css"/>
     <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="//code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+
 </head>
 <body>
 <div class="background">
@@ -62,13 +63,11 @@ function SetResponse(uuid, response) {
   old = $(divName).text();
   $(divName).text("Saving...");
 
-  console.log(dataString);
   $.ajax({
     type: "POST",
     data: dataString,
     url: "/rsvp",
     success: function(data) {
-      console.log("RET " + data.retval);
       $(divName).text(old);
       DrawResponse(response);
       inProgress = false;
@@ -77,7 +76,6 @@ function SetResponse(uuid, response) {
 }
 
 
-console.log("READY");
 var uuid = '{{  guest.uuid }}';
 $("#divYes").bind("tap", function( event ){
   SetResponse(uuid, 1);
@@ -89,17 +87,13 @@ $("#divNo").bind("tap", function( event ){
   SetResponse(uuid, -1);
 });
 
-$(".response").each(function (i) {
-  console.log("EACH");
-});
-
 DrawResponse(parseInt({{ guest.rsvp }}));
 
 </script>
 </body>
 {% else %}
   <body style="background-color: #000000">
-    <div id="notfound" style="color: white; font-size: x-large; position:fixed; top=50%">
+    <div id="notfound" style="color: white; font-size: x-large; position:absolute; top:0; left:0; right:0; bottom: 0; margin: auto">
       <p align="center"> Sorry, It looks like you don't have access to this page :(
                          Do you have the right URL? </p>
     </div>

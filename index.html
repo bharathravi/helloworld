@@ -6,10 +6,10 @@
     <meta name=viewport content='width=700'>
     <link type="text/css" rel="stylesheet" href="/stylesheets/parallax.css" />
     <link type="text/css" rel="stylesheet" href="/stylesheets/snowflakes.css" />
-    <link rel="stylesheet" href="//code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
 
     <!-- Grab the JQuery API from the Google servers -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
 
     <!-- Scripts for parallax  -->
     <script type="text/javascript" src="scripts/jquery.parallax-1.1.3.js"></script>
@@ -18,7 +18,6 @@
     <script type="text/javascript" src="scripts/imagesloaded.js"></script>
     <script type="text/javascript" src="scripts/skrollr.js"></script>
     <script type="text/javascript" src="scripts/snowflakes.js"></script>
-    <script src="//code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
     <script type="text/javascript" charset="utf-8">
 
     function ResponseToDiv(response) {
@@ -82,7 +81,6 @@
 
         //FadeIn all sections   
         imagesLoaded("#preload", function( instance ) {
-      	     console.log("ALL IMAGES LOADED");
              // Resize sections
              adjustWindow();
 
@@ -114,7 +112,6 @@
 
 
 
-      console.log("READY");
       var uuid = '{{  guest.uuid }}';
       $("#divYes").click(function(){
         SetResponse(uuid, 1);
@@ -308,7 +305,7 @@
     {% else %}
   <body style="background-color: #000000">
 	<div id="notfound" style="color: white; font-size: x-large; position:fixed; position:absolute; top:0; bottom:0; left:0; right:0; margin:auto">
-      <p align="center"> Sorry, It looks like you don't have access to this page :(
+      <p align="center"> Sorry, It looks like you don't have access to this page :( </br>
           Do you have the right URL? </p>
        </div>
     {% endif %}
