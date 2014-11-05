@@ -140,7 +140,10 @@
 	  $("#getdirections").bind("tap", function( event ) {
 	     window.open("https://www.google.com/maps/place/Sri+Rajrajeshwari+Kalyana+Mantapa/@12.994296,77.554975,17z/data=!3m1!4b1!4m2!3m1!1s0x3bae3d8ebc8d9bb5:0x291f8d9d30f3b489", '_blank');
 	  });
-
+	  
+	  // We can't use CSS3 vh because of stupid safarti :-/
+	  $(".static").height($(window).height());
+	  $(".storyelement").height($(window).height());
   
       DrawResponse(parseInt({{ guest.rsvp }}));
 
@@ -282,7 +285,7 @@
                 data-center-top="opacity: 0;"
                 data-anchor-target="#eighth">
 			
-				<div id="responseOuter" class="static"
+				<div id="responseOuter"
                 data-center="opacity: 9"
                 data-center-top="opacity: 0;"
                 data-anchor-target="#eighth">
