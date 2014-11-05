@@ -99,10 +99,10 @@ box-shadow: inset 5px 5px #D3CBC3;
 }
 
 #intro {
-  position: fixed;
+  position: absolute;
   top: 0px;
-  height: 1%;
-  padding-bottom: 2%;
+  height: 0.5%;
+  padding-bottom: 0;
   padding-left: 2%;
   padding-top: 1%;
   width: 100%;
