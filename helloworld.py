@@ -162,7 +162,8 @@ class AddGuests(AdminPage):
 
   def CsvUpload(self):
     csv_file = self.request.get("csv")
-    for line in open(csv_file):
+
+    for line in csv_file.split(';'):
       words = line.split(',')
       words = [x.strip() for x in words]
       self.NewInvitee(words[0], words[1], words[2], words[3])
