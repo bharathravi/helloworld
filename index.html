@@ -142,6 +142,10 @@
 	  });
 	  
 	  // We can't use CSS3 vh because of stupid safarti :-/
+	  $(window).resize(function () {  
+	    $(".static").height($(window).height());
+	    $(".storyelement").height($(window).height());
+	  });
 	  $(".static").height($(window).height());
 	  $(".storyelement").height($(window).height());
   
