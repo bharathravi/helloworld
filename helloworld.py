@@ -40,7 +40,7 @@ We hope to see you there!
 
 Yours,
 --
-Bharath and Ranjitha
+Bharath Ravi and Ranjitha Gurunath Kulkarni
 """
 
 JINJA_ENVIRONMENT = jinja2.Environment(
